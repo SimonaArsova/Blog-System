@@ -1,4 +1,5 @@
 ﻿using BlogSystem.Data.Model;
+using BlogSystem.Data.Model.Contracts;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,33 @@ namespace BlogSystem.Data
         {
         }
 
+        public override int SaveChanges()
+        {
+            this.ApplyAuditInfoRules();
+            return base.SaveChanges();
+        }
+
         public IDbSet<Post> Posts { get; set; }
+
+        private void ApplyAuditInfoRules()
+        {
+            foreach (var entry in
+                this.ChangeTracker.Entries()
+                    .Where(
+                        e =>
+                        e.Entity is IAuditable && ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))
+            {
+                var entity = (IAuditable)entry.Entity;
+                if (entry.State == EntityState.Added && entity.CreatedOn == default(DateTime))
+                {
+                    entity.CreatedOn = DateTime.Now;
+                }
+                else
+                {
+                    entity.ModifiedOn = DateTime.Now;
+                }
+            }
+        }
 
         public static MsSqlDbContext Create()
         {

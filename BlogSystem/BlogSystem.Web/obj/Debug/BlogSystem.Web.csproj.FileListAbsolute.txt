@@ -74,3 +74,12 @@ E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\BlogSystem.Data.
 E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\BlogSystem.Data.Model.dll.config
 E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\BlogSystem.Data.pdb
 E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\BlogSystem.Data.dll.config
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.Extensions.Conventions.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.Web.Common.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.Web.Mvc.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\WebActivatorEx.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.Extensions.Conventions.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.Web.Common.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Web\bin\Ninject.Web.Mvc.xml
