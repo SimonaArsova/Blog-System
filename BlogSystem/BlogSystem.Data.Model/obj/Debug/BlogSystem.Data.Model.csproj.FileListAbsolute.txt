@@ -1,0 +1,15 @@
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\BlogSystem.Data.Model.dll.config
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\BlogSystem.Data.Model.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\BlogSystem.Data.Model.pdb
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\EntityFramework.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\EntityFramework.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\obj\Debug\BlogSystem.Data.Model.csprojResolveAssemblyReference.cache
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\obj\Debug\BlogSystem.Data.Model.csproj.CoreCompileInputs.cache
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\obj\Debug\BlogSystem.Data.Model.dll
+E:\Telerik\ASP.NET MVC\BlogSystem\BlogSystem\BlogSystem.Data.Model\obj\Debug\BlogSystem.Data.Model.pdb
