@@ -10,7 +10,7 @@ namespace BlogSystem.Data.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<BlogSystem.Data.MsSqlDbContext>
     {
-        private const string AdministratorUserName = "info@telerikacademy.com";
+        private const string AdministratorUserName = "simona.arsova@abv.bg";
         private const string AdministratorPassword = "123456";
 
 

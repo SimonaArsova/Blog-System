@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.Data", "BlogSyst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.Data.Model", "BlogSystem.Data.Model\BlogSystem.Data.Model.csproj", "{EDC546C1-CF4E-4A55-899D-F6D5D8ACA696}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A1444F0A-5AD9-4EC0-A952-EC5E81447C0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.Services", "BlogSystem.Services\BlogSystem.Services.csproj", "{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3675D481-5719-42B4-A4F3-950D0641719D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,13 +35,19 @@ Global
 		{EDC546C1-CF4E-4A55-899D-F6D5D8ACA696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC546C1-CF4E-4A55-899D-F6D5D8ACA696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC546C1-CF4E-4A55-899D-F6D5D8ACA696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{66FA507B-692A-4723-B45E-25ED181AD5CB} = {3675D481-5719-42B4-A4F3-950D0641719D}
 		{C204213D-871C-486C-8146-EABDC378F3DA} = {19025842-5605-4F2B-8D1E-6A2626EC75B6}
 		{EDC546C1-CF4E-4A55-899D-F6D5D8ACA696} = {19025842-5605-4F2B-8D1E-6A2626EC75B6}
+		{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A} = {A1444F0A-5AD9-4EC0-A952-EC5E81447C0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {494C8027-821C-4C68-AEA9-C1291617517E}

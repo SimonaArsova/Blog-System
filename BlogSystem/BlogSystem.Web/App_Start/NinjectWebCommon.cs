@@ -14,6 +14,7 @@ namespace BlogSystem.Web.App_Start
     using BlogSystem.Data;
     using Ninject.Extensions.Conventions;
     using BlogSystem.Data.Repositories;
+    using BlogSystem.Services.Contracts;
 
     public static class NinjectWebCommon 
     {
@@ -68,6 +69,13 @@ namespace BlogSystem.Web.App_Start
             kernel.Bind(x =>
             {
                 x.FromThisAssembly()
+                 .SelectAllClasses()
+                 .BindDefaultInterface();
+            });
+
+            kernel.Bind(x =>
+            {
+                x.FromAssemblyContaining(typeof(IService))
                  .SelectAllClasses()
                  .BindDefaultInterface();
             });

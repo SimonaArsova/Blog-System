@@ -24,7 +24,7 @@ namespace BlogSystem.Data.Repositories
             }
         }
 
-        public IQueryable<T> AllAndDeleted
+        public IQueryable<T> AllIncludingDeleted
         {
             get
             {
