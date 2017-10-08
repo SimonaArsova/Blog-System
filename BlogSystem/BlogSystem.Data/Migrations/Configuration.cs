@@ -1,10 +1,10 @@
 namespace BlogSystem.Data.Migrations
 {
     using BlogSystem.Data.Model;
+    using BlogSystem.Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -32,12 +32,8 @@ namespace BlogSystem.Data.Migrations
         {
             if (!context.Roles.Any())
             {
-                var roleName = "Admin";
-
-                var roleStore = new RoleStore<IdentityRole>(context);
-                var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole { Name = roleName };
-                roleManager.Create(role);
+                CreateRole(GlobalConstants.AdminRole, context);
+                CreateRole(GlobalConstants.RegisteredUserRole, context);
 
                 var userStore = new UserStore<User>(context);
                 var userManager = new UserManager<User>(userStore);
@@ -50,8 +46,18 @@ namespace BlogSystem.Data.Migrations
                 };
 
                 userManager.Create(user, AdministratorPassword);
-                userManager.AddToRole(user.Id, roleName);
+                userManager.AddToRole(user.Id, GlobalConstants.AdminRole);
+                userManager.AddToRole(user.Id, GlobalConstants.RegisteredUserRole);
             }
+        }
+
+        private void CreateRole(string roleName, MsSqlDbContext context)
+        {
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            var role = new IdentityRole { Name = roleName };
+
+            roleManager.Create(role);
         }
 
         private void SeedSampleData(MsSqlDbContext context)

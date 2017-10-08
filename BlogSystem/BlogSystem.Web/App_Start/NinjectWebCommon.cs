@@ -16,6 +16,7 @@ namespace BlogSystem.Web.App_Start
     using BlogSystem.Data.Repositories;
     using BlogSystem.Data.SaveContext;
     using BlogSystem.Services.Contracts;
+    using AutoMapper;
 
     public static class NinjectWebCommon 
     {
@@ -84,6 +85,7 @@ namespace BlogSystem.Web.App_Start
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<ISaveContext>().To<SaveContext>();
+            kernel.Bind<IMapper>().To<Mapper>();
         }        
     }
 }
