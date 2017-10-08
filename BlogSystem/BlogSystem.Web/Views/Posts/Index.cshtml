@@ -1,12 +1,12 @@
 ﻿@using BlogSystem.Web.Models.Posts
-@model ICollection<PostViewModel>
+@model PostsCollectionViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
 <div class="row">
-    @foreach (var post in Model)
+    @foreach (var post in Model.Posts)
     {
         <div class="col-md-4">
             <h2>@post.Title</h2>

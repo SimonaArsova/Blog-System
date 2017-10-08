@@ -1,4 +1,6 @@
-﻿using BlogSystem.Services;
+﻿using AutoMapper;
+using BlogSystem.Services;
+using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Models.Posts;
 using System;
 using System.Collections.Generic;
@@ -22,15 +24,15 @@ namespace BlogSystem.Web.Controllers
         {
             var posts = this.postsService
                 .GetAll()
-                .Select(x => new PostViewModel() {
-                    Title = x.Title,
-                    Content = x.Content,
-                    AuthorEmail = x.Author.Email,
-                    PostedOn = x.CreatedOn.Value
-                })
+                .MapTo<PostViewModel>()
                 .ToList();
 
-            return View(posts);
+            var viewModel = new PostsCollectionViewModel()
+            {
+                Posts = posts
+            };
+
+            return View(viewModel);
         }
 
         // GET: Posts/Details/5

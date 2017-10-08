@@ -1,8 +1,11 @@
-﻿using System;
+﻿using BlogSystem.Data.Model;
+using BlogSystem.Web.Infrastructure;
+using System;
+using AutoMapper;
 
 namespace BlogSystem.Web.Models.Posts
 {
-    public class PostViewModel
+    public class PostViewModel : IMapFrom<Post>, IHaveCustomMappings
     {
         public string Title { get; set; }
 
@@ -11,5 +14,12 @@ namespace BlogSystem.Web.Models.Posts
         public string AuthorEmail { get; set; }
 
         public DateTime PostedOn { get; set; }
+
+        public void CreateMappings(IMapperConfigurationExpression configuration)
+        {
+            configuration.CreateMap<Post, PostViewModel>()
+                .ForMember(postViewModel => postViewModel.AuthorEmail, cfg => cfg.MapFrom(post => post.Author.Email))
+                .ForMember(postViewModel => postViewModel.PostedOn, cfg => cfg.MapFrom(post => post.CreatedOn));
+        }
     }
 }
