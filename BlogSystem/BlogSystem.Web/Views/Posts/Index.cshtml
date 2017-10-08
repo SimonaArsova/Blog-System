@@ -1,0 +1,22 @@
+﻿@using BlogSystem.Web.Models.Posts
+@model ICollection<PostViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4">
+            <h2>@post.Title</h2>
+            <p>@post.Content</p>
+            <p>@post.AuthorEmail - @post.PostedOn</p>
+        </div>
+    }
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
