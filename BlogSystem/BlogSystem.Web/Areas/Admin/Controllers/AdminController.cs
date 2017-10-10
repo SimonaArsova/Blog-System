@@ -20,8 +20,14 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
             this.postsService = postsService;
         }
 
-        // GET: Admin/Admin
         public ActionResult Index()
+        {
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeletePost()
         {
             var posts = this.postsService
                 .GetAll()
@@ -42,5 +48,30 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
             this.postsService.DeletePost(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult RestorePost()
+        {
+            var posts = this.postsService
+                .GetDeleted()
+                .MapTo<PostViewModel>()
+                .ToList();
+
+            var viewModel = new PostsCollectionViewModel()
+            {
+                Posts = posts
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Restore(Guid id)
+        {
+            this.postsService.RestorePost(id);
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

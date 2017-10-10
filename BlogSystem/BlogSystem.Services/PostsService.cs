@@ -21,10 +21,22 @@ namespace BlogSystem.Services
             return this.postsRepo.All;
         }
 
+        public IQueryable<Post> GetDeleted()
+        {
+            return this.postsRepo.Deleted;
+        }
+
         public void DeletePost(Guid id)
         {
             var postToDelete = this.postsRepo.All.FirstOrDefault(post => post.Id == id);
             this.postsRepo.Delete(postToDelete);
+            context.SaveChanges();
+        }
+
+        public void RestorePost(Guid id)
+        {
+            var postToRestore = this.postsRepo.Deleted.FirstOrDefault(post => post.Id == id);
+            this.postsRepo.Restore(postToRestore);
             context.SaveChanges();
         }
 

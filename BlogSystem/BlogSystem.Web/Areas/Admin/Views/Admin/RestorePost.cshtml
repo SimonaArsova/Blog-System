@@ -1,0 +1,22 @@
+﻿@using BlogSystem.Web.Models.Posts
+@model PostsCollectionViewModel
+
+@{
+    ViewBag.Title = "RestorePost";
+}
+
+<div class="row">
+    @foreach (var post in Model.Posts)
+    {
+        <div id="post" class="col-md-4">
+            <h2>@post.Title</h2>
+            <p>@post.AuthorEmail - @post.PostedOn</p>
+            @Ajax.ActionLink("Restore post", "Restore", "Admin", new { id = post.Id }, new AjaxOptions()
+       {
+           InsertionMode = InsertionMode.Replace,
+           UpdateTargetId = "post"
+       })
+        </div>
+
+    }
+</div>

@@ -8,6 +8,10 @@ namespace BlogSystem.Services
     {
         IQueryable<Post> GetAll();
 
+        IQueryable<Post> GetDeleted();
+
         void DeletePost(Guid id);
+
+        void RestorePost(Guid id);
     }
 }

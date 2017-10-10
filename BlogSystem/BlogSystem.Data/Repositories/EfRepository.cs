@@ -32,6 +32,14 @@ namespace BlogSystem.Data.Repositories
             }
         }
 
+        public IQueryable<T> Deleted
+        {
+            get
+            {
+                return this.context.Set<T>().Where(x => x.IsDeleted);
+            }
+        }
+
         public void Add(T entity)
         {
             DbEntityEntry entry = this.context.Entry(entity);
@@ -49,6 +57,15 @@ namespace BlogSystem.Data.Repositories
         public void Delete(T entity)
         {
             entity.IsDeleted = true;
+            entity.DeletedOn = DateTime.Now;
+
+            var entry = this.context.Entry(entity);
+            entry.State = EntityState.Modified;
+        }
+
+        public void Restore(T entity)
+        {
+            entity.IsDeleted = false;
             entity.DeletedOn = DateTime.Now;
 
             var entry = this.context.Entry(entity);

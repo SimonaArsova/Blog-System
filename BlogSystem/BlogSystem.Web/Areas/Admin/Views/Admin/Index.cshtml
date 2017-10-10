@@ -1,23 +1,9 @@
-﻿@using BlogSystem.Web.Models.Posts
-@model PostsCollectionViewModel
+﻿
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="row">
-    @foreach (var post in Model.Posts)
-    {
-        <div id="post" class="col-md-4">
-            <h2>@post.Title</h2>
-            <p>@post.Content</p>
-            <p>@post.AuthorEmail - @post.PostedOn</p>
-            @Ajax.ActionLink("Delete post", "Delete", "Admin",new {id = post.Id}, new AjaxOptions()
-       {
-           InsertionMode = InsertionMode.Replace,
-           UpdateTargetId = "post"
-       })
-        </div>
+@(Html.ActionLink("Delete post", "DeletePost", "Admin", new { area = "Admin" }, new { @class = "btn btn-info" }))
 
-    }
-</div>
+@(Html.ActionLink("Restore post", "RestorePost", "Admin", new { area = "Admin" }, new { @class = "btn btn-info" }))
