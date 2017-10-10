@@ -1,4 +1,7 @@
-﻿using BlogSystem.Web.Infrastructure.Attributes;
+﻿using BlogSystem.Services;
+using BlogSystem.Web.Infrastructure;
+using BlogSystem.Web.Infrastructure.Attributes;
+using BlogSystem.Web.Models.Posts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,82 +13,34 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
     [AuthorizeAdmin]
     public class AdminController : Controller
     {
+        private readonly IPostsService postsService;
+
+        public AdminController(IPostsService postsService)
+        {
+            this.postsService = postsService;
+        }
+
         // GET: Admin/Admin
         public ActionResult Index()
         {
-            return View();
-        }
+            var posts = this.postsService
+                .GetAll()
+                .MapTo<PostViewModel>()
+                .ToList();
 
-        // GET: Admin/Admin/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Admin/Admin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/Admin/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            var viewModel = new PostsCollectionViewModel()
             {
-                // TODO: Add insert logic here
+                Posts = posts
+            };
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(viewModel);
         }
 
-        // GET: Admin/Admin/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Delete(Guid id)
         {
-            return View();
-        }
-
-        // POST: Admin/Admin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Admin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            this.postsService.DeletePost(id);
+            return RedirectToAction("Index");
         }
     }
 }

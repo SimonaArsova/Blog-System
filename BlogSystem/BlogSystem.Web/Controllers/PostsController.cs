@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BlogSystem.Data.Model;
 using BlogSystem.Services;
 using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Models.Posts;
@@ -84,27 +85,6 @@ namespace BlogSystem.Web.Controllers
                 return View();
             }
         }
-
-        // GET: Posts/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Posts/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

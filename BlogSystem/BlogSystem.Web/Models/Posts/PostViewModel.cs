@@ -7,6 +7,8 @@ namespace BlogSystem.Web.Models.Posts
 {
     public class PostViewModel : IMapFrom<Post>, IHaveCustomMappings
     {
+        public Guid Id { get; set; }
+
         public string Title { get; set; }
 
         public string Content { get; set; }

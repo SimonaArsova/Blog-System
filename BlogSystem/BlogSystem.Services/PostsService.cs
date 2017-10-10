@@ -1,6 +1,7 @@
 ﻿using BlogSystem.Data.Model;
 using BlogSystem.Data.Repositories;
 using BlogSystem.Data.SaveContext;
+using System;
 using System.Linq;
 
 namespace BlogSystem.Services
@@ -19,5 +20,13 @@ namespace BlogSystem.Services
         {
             return this.postsRepo.All;
         }
+
+        public void DeletePost(Guid id)
+        {
+            var postToDelete = this.postsRepo.All.FirstOrDefault(post => post.Id == id);
+            this.postsRepo.Delete(postToDelete);
+            context.SaveChanges();
+        }
+
     }
 }
