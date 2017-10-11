@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace BlogSystem.Web.Areas.User.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IPostsService postsService;
@@ -37,7 +38,7 @@ namespace BlogSystem.Web.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 string userId = User.Identity.GetUserId();
-                this.postsService.Create(model.Title, model.Content, userId);
+                this.postsService.Create(model.Title, model.Content, model.Image, userId);
 
                 return this.RedirectToAction("Posts");
             }

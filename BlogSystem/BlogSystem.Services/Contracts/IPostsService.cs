@@ -14,6 +14,6 @@ namespace BlogSystem.Services
 
         void RestorePost(Guid id);
 
-        void Create(string title, string content, string userId);
+        void Create(string title, string content, string image, string userId);
     }
 }

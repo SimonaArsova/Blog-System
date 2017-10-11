@@ -13,6 +13,8 @@ namespace BlogSystem.Web.Models.Posts
 
         public string Content { get; set; }
 
+        public string Image { get; set; }
+
         public string AuthorEmail { get; set; }
 
         public DateTime PostedOn { get; set; }

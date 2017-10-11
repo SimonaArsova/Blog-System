@@ -29,6 +29,12 @@ namespace BlogSystem.Web
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
                       "~/Content/login.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/addPost").Include(
+                      "~/Content/addPost.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/allPosts").Include(
+                     "~/Content/allPosts.css"));
         }
     }
 }

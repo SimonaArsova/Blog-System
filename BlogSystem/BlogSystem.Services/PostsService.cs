@@ -44,13 +44,13 @@ namespace BlogSystem.Services
             context.SaveChanges();
         }
 
-        public void Create(string title, string content, string userId)
+        public void Create(string title, string content, string image, string userId)
         {
             Guid id = Guid.NewGuid();
             User user = this.userService.GetById(userId);
             DateTime createdOn = DateTime.Now;
 
-            Post post = new Post(title, content, user);
+            Post post = new Post(title, content, image, user);
             this.postsRepo.Add(post);
             context.SaveChanges();
         }

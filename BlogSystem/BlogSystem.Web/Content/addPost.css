@@ -116,9 +116,9 @@ p.small {
     -webkit-animation-delay: 1s;
 }
 
-#username, #password, #inputField{
-    margin-left:10%;
-    margin-right:10%;
-    right:10%;
-    max-width:270px;
+#username, #password, #inputField {
+    margin-left: 10%;
+    margin-right: 10%;
+    right: 10%;
+    max-width: 270px;
 }

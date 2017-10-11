@@ -16,11 +16,12 @@ namespace BlogSystem.Web.Models.Posts
 
         }
 
-        public CreatePostViewModel(Guid id, string title, string content)
+        public CreatePostViewModel(Guid id, string title, string content, string image)
         {
             this.Id = id;
             this.Title = title;
             this.Content = content;
+            this.Image = image;
         }
 
         public Guid Id { get; set; }
@@ -32,6 +33,11 @@ namespace BlogSystem.Web.Models.Posts
         [Required]
         [Display(Name = "Content")]
         public string Content { get; set; }
-        
+
+        [Required]
+        [Url]
+        [Display(Name = "Image")]
+        public string Image { get; set; }
+
     }
 }

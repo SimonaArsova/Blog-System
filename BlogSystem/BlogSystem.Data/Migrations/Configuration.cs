@@ -7,6 +7,7 @@ namespace BlogSystem.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web;
 
     public sealed class Configuration : DbMigrationsConfiguration<BlogSystem.Data.MsSqlDbContext>
     {
@@ -71,6 +72,7 @@ namespace BlogSystem.Data.Migrations
                         Title = "Post " + i,
                         Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla. Vivamus turpis lorem, pellentesque eget enim ut, semper faucibus tortor. Aenean malesuada laoreet lorem.",
                         Author = context.Users.First(x => x.Email == AdministratorUserName),
+                        Image = "https://upload.wikimedia.org/wikipedia/commons/0/04/Post_Danmark_Post_boxes_in_F%C3%A5borg%2C_Denmark.jpg",
                         CreatedOn = DateTime.Now
                     };
 

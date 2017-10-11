@@ -5,20 +5,31 @@
     ViewBag.Title = "Index";
 }
 
-@Styles.Render("~Content/css/login.css")
+@Styles.Render("~/Content/css/allPosts")
 
-<div class="row">
-    @foreach (var post in Model.Posts)
-    {
-        <div class="col-md-4">
-            <h2>@post.Title</h2>
-            <p>@post.Content</p>
-            <p>@post.AuthorEmail - @post.PostedOn</p>
-        </div>
-    }
-
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+<main>
+    <div class="container mt40">
+        <section id="row">
+            @foreach (var post in Model.Posts)
+            {
+                <article class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
+                    <div class="card panel panel-default">
+                        <div class="panel-body offer-image ">
+                            <a href="#" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
+                                <img class="card-img-top custom-card offer-image" src=@post.Image alt="Image" />
+                            </a>
+                        </div>
+                        <div class="panel-footer card-block">
+                            <h5><a href="#" class="a" title="Image">@post.Title</a></h5>
+                            <p class="a">
+                                <i class="left" aria-hidden="true"> @post.AuthorEmail</i>
+                                <i class="card-location" aria-hidden="true"> @post.PostedOn</i>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            }
+        </section>
+    </div>
+</main>
