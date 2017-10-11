@@ -13,5 +13,7 @@ namespace BlogSystem.Services
         void DeletePost(Guid id);
 
         void RestorePost(Guid id);
+
+        void Create(string title, string content, string userId);
     }
 }

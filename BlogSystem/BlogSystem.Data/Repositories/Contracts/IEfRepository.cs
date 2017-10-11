@@ -13,5 +13,6 @@ namespace BlogSystem.Data.Repositories
         void Delete(T entity);
         void Restore(T entity);
         void Update(T entity);
+        T GetById(object id);
     }
 }
