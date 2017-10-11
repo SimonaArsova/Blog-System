@@ -48,6 +48,7 @@ namespace BlogSystem.Services
         {
             Guid id = Guid.NewGuid();
             User user = this.userService.GetById(userId);
+            DateTime createdOn = DateTime.Now;
 
             Post post = new Post(title, content, user);
             this.postsRepo.Add(post);

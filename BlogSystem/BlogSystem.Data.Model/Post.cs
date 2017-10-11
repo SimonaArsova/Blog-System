@@ -29,5 +29,6 @@ namespace BlogSystem.Data.Model
         public string Content { get; set; }
 
         public User Author { get; set; }
+        
     }
 }

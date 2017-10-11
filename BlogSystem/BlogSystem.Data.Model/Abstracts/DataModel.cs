@@ -9,6 +9,7 @@ namespace BlogSystem.Data.Model.Abstracts
         public DataModel()
         {
             this.Id = Guid.NewGuid();
+            this.CreatedOn = DateTime.Now;
         }
 
         [Key]
