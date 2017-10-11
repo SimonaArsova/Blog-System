@@ -3,6 +3,16 @@
     padding-bottom: 20px;
 }
 
+body {
+    background: url("https://ditsmarketing.com/wp-content/uploads/2015/08/ideas.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    color: #666;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

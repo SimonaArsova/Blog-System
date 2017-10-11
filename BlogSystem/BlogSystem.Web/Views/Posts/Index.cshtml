@@ -5,6 +5,8 @@
     ViewBag.Title = "Index";
 }
 
+@Styles.Render("~Content/css/login.css")
+
 <div class="row">
     @foreach (var post in Model.Posts)
     {
