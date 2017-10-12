@@ -1,11 +1,6 @@
 ﻿using BlogSystem.Services;
-using BlogSystem.Web.Infrastructure.Attributes;
 using BlogSystem.Web.Models.Posts;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BlogSystem.Web.Areas.User.Controllers
@@ -40,11 +35,10 @@ namespace BlogSystem.Web.Areas.User.Controllers
                 string userId = User.Identity.GetUserId();
                 this.postsService.Create(model.Title, model.Content, model.Image, userId);
 
-                return this.RedirectToAction("Posts");
+                return this.RedirectToAction("Index", "Posts", new { area = ""});
             }
             else
             {
-                // 
                 return this.RedirectToAction("AddPost");
             }
         }

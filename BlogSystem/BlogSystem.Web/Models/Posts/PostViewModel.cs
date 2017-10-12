@@ -2,6 +2,7 @@
 using BlogSystem.Web.Infrastructure;
 using System;
 using AutoMapper;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlogSystem.Web.Models.Posts
 {
@@ -17,6 +18,7 @@ namespace BlogSystem.Web.Models.Posts
 
         public string AuthorEmail { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime PostedOn { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)

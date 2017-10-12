@@ -25,6 +25,10 @@
             <br />
             @Html.TextAreaFor(m => m.Content, new { @class = "form-control", id = "inputField" })
             <br />
+            @Html.LabelFor(m => m.Image, new { @class = "control-label" })
+            <br />
+            @Html.TextBoxFor(m => m.Image, new { @class = "form-control", id = "inputField" })
+            <br />
             <button type="submit">Create post</button>
 
         }
