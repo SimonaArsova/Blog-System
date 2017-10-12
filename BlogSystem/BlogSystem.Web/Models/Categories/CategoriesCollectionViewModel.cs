@@ -9,6 +9,6 @@ namespace BlogSystem.Web.Models.Categories
 {
     public class CategoriesCollectionViewModel
     {
-        public IEnumerable<SelectListItem> Categories { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }
