@@ -35,6 +35,9 @@ namespace BlogSystem.Web
 
             bundles.Add(new StyleBundle("~/Content/css/allPosts").Include(
                      "~/Content/allPosts.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/details").Include(
+                     "~/Content/details.css"));
         }
     }
 }

@@ -4,7 +4,7 @@
 }
 
 body {
-    background: url("https://ditsmarketing.com/wp-content/uploads/2015/08/ideas.jpg") no-repeat center center fixed;
+    background: linear-gradient( rgba(255, 0, 0, 0.4), rgba(255, 0, 0, 0.4) ),url("https://ditsmarketing.com/wp-content/uploads/2015/08/ideas.jpg") no-repeat center center fixed;
     background-size: cover;
     font-size: 16px;
     font-family: 'Lato', sans-serif;

@@ -5,7 +5,30 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Model.Title</h2>
-<h2>@Model.Content</h2>
-<img src=@Model.Image alt="Alternate Text" />
+@Styles.Render("~/Content/css/details")
 
+<div class="outher-div">
+    <div class="outher">
+        <div class="container-details">
+            <img class="d-block img-fluid carousel-inner" src=@Model.Image alt="Third slide">
+
+            <div class="descr">
+                <h3 class="title-des">@Model.Title</h3>
+                <h3>@Model.AuthorEmail</h3>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="description-div">
+                <hr>
+                <h3 class="line-offset"><i class="fa fa-info-circle fa-3x" aria-hidden="true"></i> Category:</h3>
+                <h6 class="offset">@Model.Category</h6>
+            </div>
+            <div class="description-div">
+                <hr>
+                <h3 class="line-offset"><i class="fa fa-info-circle fa-3x" aria-hidden="true"></i> Description:</h3>
+                <h6 class="offset">@Model.Content</h6>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
