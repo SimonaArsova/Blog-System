@@ -26,8 +26,7 @@ namespace BlogSystem.Data.Migrations
         {
             this.SeedUsers(context);
             this.SeedCategories(context);
-            base.Seed(context);
-            this.SeedSampleData(context);
+           //this.SeedSampleData(context);
             base.Seed(context);
 
         }

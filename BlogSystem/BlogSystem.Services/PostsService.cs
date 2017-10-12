@@ -3,6 +3,7 @@ using BlogSystem.Data.Repositories;
 using BlogSystem.Data.SaveContext;
 using BlogSystem.Services.Contracts;
 using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace BlogSystem.Services
@@ -34,14 +35,22 @@ namespace BlogSystem.Services
 
         public void DeletePost(Guid id)
         {
-            var postToDelete = this.postsRepo.All.FirstOrDefault(post => post.Id == id);
+            var postToDelete = this.postsRepo.All
+                .Include(x => x.Author)
+                .Include(x => x.Category)
+                .FirstOrDefault(post => post.Id == id);
+
             this.postsRepo.Delete(postToDelete);
             context.SaveChanges();
         }
 
         public void RestorePost(Guid id)
         {
-            var postToRestore = this.postsRepo.Deleted.FirstOrDefault(post => post.Id == id);
+            var postToRestore = this.postsRepo.Deleted
+                .Include(x => x.Author)
+                .Include(x => x.Category)
+                .FirstOrDefault(post => post.Id == id);
+
             this.postsRepo.Restore(postToRestore);
             context.SaveChanges();
         }
