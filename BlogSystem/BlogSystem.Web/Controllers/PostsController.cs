@@ -37,10 +37,15 @@ namespace BlogSystem.Web.Controllers
         }
 
         // GET: Posts/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var post = this.postsService
+                .GetAll()
+                .MapTo<PostViewModel>()
+                .FirstOrDefault(p => p.Id == new Guid(id));
+
+            return View(post);
         }
-        
+
     }
 }

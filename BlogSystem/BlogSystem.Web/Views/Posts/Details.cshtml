@@ -1,0 +1,11 @@
+﻿@using BlogSystem.Web.Models.Posts
+@model PostViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Title</h2>
+<h2>@Model.Content</h2>
+<img src=@Model.Image alt="Alternate Text" />
+

@@ -16,7 +16,8 @@
                 <article class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
                     <div class="card panel panel-default">
                         <div class="panel-body offer-image ">
-                            <a href="#" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
+                            @*@Html.ActionLink("", "Posts", new { area = "" }, new { @class = "navbar-brand zoom", title = "Image", data_type = "image", data_toggle = "lightbox" })*@
+                            <a href='@Url.Action("Details", "Posts", new { id = post.Id})'title="Image" class="zoom" data-type="image" data-toggle="lightbox">
                                 <img class="card-img-top custom-card offer-image" src=@post.Image alt="Image" />
                             </a>
                         </div>

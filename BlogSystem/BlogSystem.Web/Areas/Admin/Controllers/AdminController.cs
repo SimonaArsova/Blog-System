@@ -3,9 +3,7 @@ using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Infrastructure.Attributes;
 using BlogSystem.Web.Models.Posts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BlogSystem.Web.Areas.Admin.Controllers
