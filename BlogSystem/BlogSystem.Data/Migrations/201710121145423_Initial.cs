@@ -8,6 +8,20 @@ namespace BlogSystem.Data.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Categories",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        DeletedOn = c.DateTime(),
+                        CreatedOn = c.DateTime(),
+                        ModifiedOn = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.IsDeleted);
+            
+            CreateTable(
                 "dbo.Posts",
                 c => new
                     {
@@ -20,11 +34,14 @@ namespace BlogSystem.Data.Migrations
                         CreatedOn = c.DateTime(),
                         ModifiedOn = c.DateTime(),
                         Author_Id = c.String(maxLength: 128),
+                        Category_Id = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Author_Id)
+                .ForeignKey("dbo.Categories", t => t.Category_Id, cascadeDelete: true)
                 .Index(t => t.IsDeleted)
-                .Index(t => t.Author_Id);
+                .Index(t => t.Author_Id)
+                .Index(t => t.Category_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -104,6 +121,7 @@ namespace BlogSystem.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Posts", "Category_Id", "dbo.Categories");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Posts", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -115,14 +133,17 @@ namespace BlogSystem.Data.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUsers", new[] { "IsDeleted" });
+            DropIndex("dbo.Posts", new[] { "Category_Id" });
             DropIndex("dbo.Posts", new[] { "Author_Id" });
             DropIndex("dbo.Posts", new[] { "IsDeleted" });
+            DropIndex("dbo.Categories", new[] { "IsDeleted" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Posts");
+            DropTable("dbo.Categories");
         }
     }
 }

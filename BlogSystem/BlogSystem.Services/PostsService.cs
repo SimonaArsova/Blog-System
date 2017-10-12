@@ -12,12 +12,14 @@ namespace BlogSystem.Services
         private readonly IEfRepository<Post> postsRepo;
         private readonly ISaveContext context;
         private readonly IUserService userService;
+        private readonly ICategoryService categoryService;
 
-        public PostsService(IEfRepository<Post> postsRepo, ISaveContext context, IUserService userService)
+        public PostsService(IEfRepository<Post> postsRepo, ISaveContext context, IUserService userService, ICategoryService categoryService)
         {
             this.postsRepo = postsRepo;
             this.context = context;
             this.userService = userService;
+            this.categoryService = categoryService;
         }
 
         public IQueryable<Post> GetAll()
@@ -44,13 +46,14 @@ namespace BlogSystem.Services
             context.SaveChanges();
         }
 
-        public void Create(string title, string content, string image, string userId)
+        public void Create(string title, string categoryId, string content, string image, string userId)
         {
             Guid id = Guid.NewGuid();
             User user = this.userService.GetById(userId);
             DateTime createdOn = DateTime.Now;
-
-            Post post = new Post(title, content, image, user);
+            Category category = this.categoryService.GetById(categoryId);
+            
+            Post post = new Post(title, category, content, image, user);
             this.postsRepo.Add(post);
             context.SaveChanges();
         }

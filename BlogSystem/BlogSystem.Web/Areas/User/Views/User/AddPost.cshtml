@@ -1,4 +1,6 @@
 ﻿@using BlogSystem.Web.Models.Posts
+@using BlogSystem.Web.Models.Categories
+
 @model CreatePostViewModel
 
 @{
@@ -20,6 +22,10 @@
             @Html.LabelFor(m => m.Title, new { @class = "control-label" })
             <br />
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control", id = "inputField" })
+            <br />
+            @Html.LabelFor(m => m.Category, new { @class = "control-label" })
+            <br />
+            @Html.DropDownListFor(m => m.Category, Model.Categories, new { @class = "form-control", id = "inputField" })
             <br />
             @Html.LabelFor(m => m.Content, new { @class = "control-label" })
             <br />

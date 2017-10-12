@@ -15,9 +15,10 @@ namespace BlogSystem.Data.Model
 
         }
 
-        public Post(string title, string content, string image, User author)
+        public Post(string title, Category category, string content, string image, User author)
         {
             this.Title = title;
+            this.Category = category;
             this.Content = content;
             this.Image = image;
             this.Author = author;
@@ -25,6 +26,9 @@ namespace BlogSystem.Data.Model
 
         [Required]
         public string Title { get; set; }
+
+        [Required]
+        public Category Category { get; set; }
 
         [Required]
         public string Content { get; set; }

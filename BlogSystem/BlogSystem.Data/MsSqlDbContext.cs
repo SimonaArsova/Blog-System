@@ -24,6 +24,7 @@ namespace BlogSystem.Data
         }
 
         public IDbSet<Post> Posts { get; set; }
+        public IDbSet<Category> Categories { get; set; }
 
         private void ApplyAuditInfoRules()
         {

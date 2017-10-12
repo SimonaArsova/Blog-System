@@ -12,6 +12,8 @@ namespace BlogSystem.Web.Models.Posts
 
         public string Title { get; set; }
 
+        public string Category { get; set; }
+
         public string Content { get; set; }
 
         public string Image { get; set; }
@@ -25,7 +27,8 @@ namespace BlogSystem.Web.Models.Posts
         {
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(postViewModel => postViewModel.AuthorEmail, cfg => cfg.MapFrom(post => post.Author.Email))
-                .ForMember(postViewModel => postViewModel.PostedOn, cfg => cfg.MapFrom(post => post.CreatedOn));
+                .ForMember(postViewModel => postViewModel.PostedOn, cfg => cfg.MapFrom(post => post.CreatedOn))
+                .ForMember(postViewModel => postViewModel.Category, cfg => cfg.MapFrom(post => post.Category.Name));
         }
     }
 }
