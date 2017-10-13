@@ -40,11 +40,11 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
-        [HttpGet]
-        public ActionResult Delete(Guid id)
+        [HttpPost]
+        public ActionResult DeletePost(Guid id)
         {
             this.postsService.DeletePost(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("DeletePost");
         }
 
         [HttpGet]
@@ -63,11 +63,11 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
-        [HttpGet]
-        public ActionResult Restore(Guid id)
+        [HttpPost]
+        public ActionResult RestorePost(Guid id)
         {
             this.postsService.RestorePost(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("RestorePost");
         }
 
 

@@ -2,23 +2,20 @@
 @using BlogSystem.Web.Models.Posts
 @model PostsCollectionViewModel
 
-
 @{
     ViewBag.Title = "DeletePost";
 }
-
-<div class="row">
+<div id="post" class="row">
     @foreach (var post in Model.Posts)
     {
-        <div id="post" class="col-md-4">
+        <div class="col-md-4">
             <h2>@post.Title</h2>
             <p>@post.AuthorEmail - @post.PostedOn</p>
-            @Ajax.ActionLink("Delete post", "Delete", "Admin", new { id = post.Id }, new AjaxOptions()
-       {
-           InsertionMode = InsertionMode.Replace,
-           UpdateTargetId = "post"
-       })
-        </div>
 
+            @using (Html.BeginForm("DeletePost", "Admin", new { id = post.Id, area = "Admin" }, FormMethod.Post))
+            {
+                <input type="submit" value="Delete" />
+            }
+        </div>
     }
 </div>
