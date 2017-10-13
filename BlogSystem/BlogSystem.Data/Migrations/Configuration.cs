@@ -26,7 +26,6 @@ namespace BlogSystem.Data.Migrations
         {
             this.SeedUsers(context);
             this.SeedCategories(context);
-           //this.SeedSampleData(context);
             base.Seed(context);
 
         }
@@ -70,27 +69,6 @@ namespace BlogSystem.Data.Migrations
                 var category = new Category(CategoryName);
 
                 context.Categories.Add(category);
-            }
-        }
-
-        private void SeedSampleData(MsSqlDbContext context)
-        {
-            if (!context.Posts.Any())
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    var post = new Post()
-                    {
-                        Title = "Post " + i,
-                        Category = context.Categories.First(x => x.Name == CategoryName),
-                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla. Vivamus turpis lorem, pellentesque eget enim ut, semper faucibus tortor. Aenean malesuada laoreet lorem.",
-                        Author = context.Users.First(x => x.Email == AdministratorUserName),
-                        Image = "https://upload.wikimedia.org/wikipedia/commons/0/04/Post_Danmark_Post_boxes_in_F%C3%A5borg%2C_Denmark.jpg",
-                        CreatedOn = DateTime.Now
-                    };
-
-                    context.Posts.Add(post);
-                }
             }
         }
     }

@@ -19,6 +19,13 @@ namespace BlogSystem.Data.Model
             this.posts = new HashSet<Post>();
         }
 
+        public User(string username, string email)
+           : this()
+        {
+            this.UserName = username;
+            this.Email = email;
+        }
+
         [Index]
         public bool IsDeleted { get; set; }
 

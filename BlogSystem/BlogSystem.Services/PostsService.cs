@@ -1,6 +1,7 @@
 ﻿using BlogSystem.Data.Model;
 using BlogSystem.Data.Repositories;
 using BlogSystem.Data.SaveContext;
+using BlogSystem.Factories;
 using BlogSystem.Services.Contracts;
 using System;
 using System.Data.Entity;
@@ -14,10 +15,12 @@ namespace BlogSystem.Services
         private readonly ISaveContext context;
         private readonly IUserService userService;
         private readonly ICategoryService categoryService;
+        private readonly IPostFactory postFactory;
 
-        public PostsService(IEfRepository<Post> postsRepo, ISaveContext context, IUserService userService, ICategoryService categoryService)
+        public PostsService(IEfRepository<Post> postsRepo, IPostFactory postFactory, ISaveContext context, IUserService userService, ICategoryService categoryService)
         {
             this.postsRepo = postsRepo;
+            this.postFactory = postFactory;
             this.context = context;
             this.userService = userService;
             this.categoryService = categoryService;
@@ -62,7 +65,7 @@ namespace BlogSystem.Services
             DateTime createdOn = DateTime.Now;
             Category category = this.categoryService.GetById(categoryId);
             
-            Post post = new Post(title, category, content, image, user);
+            Post post = this.postFactory.CreatePost(title, category, content, image, user);
             this.postsRepo.Add(post);
             context.SaveChanges();
         }

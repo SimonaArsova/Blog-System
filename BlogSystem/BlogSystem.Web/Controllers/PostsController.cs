@@ -2,6 +2,7 @@
 using BlogSystem.Data.Model;
 using BlogSystem.Services;
 using BlogSystem.Web.Infrastructure;
+using BlogSystem.Web.Infrastructure.Factories;
 using BlogSystem.Web.Models.Posts;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ namespace BlogSystem.Web.Controllers
     public class PostsController : Controller
     {
         private readonly IPostsService postsService;
+        private readonly IViewModelFactory viewModelFactory;
 
-        public PostsController(IPostsService postsService)
+
+        public PostsController(IPostsService postsService, IViewModelFactory viewModelFactory)
         {
             this.postsService = postsService;
+            this.viewModelFactory = viewModelFactory;
         }
 
         // GET: Posts
@@ -28,11 +32,10 @@ namespace BlogSystem.Web.Controllers
                 .MapTo<PostViewModel>()
                 .ToList();
 
-            var viewModel = new PostsCollectionViewModel()
-            {
-                Posts = posts
-            };
+            var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
 
+            viewModel.Posts = posts;
+            
             return View(viewModel);
         }
 

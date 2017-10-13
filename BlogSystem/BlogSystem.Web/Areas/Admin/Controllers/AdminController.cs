@@ -1,6 +1,7 @@
 ﻿using BlogSystem.Services;
 using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Infrastructure.Attributes;
+using BlogSystem.Web.Infrastructure.Factories;
 using BlogSystem.Web.Models.Posts;
 using System;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private readonly IPostsService postsService;
+        private readonly IViewModelFactory viewModelFactory;
 
-        public AdminController(IPostsService postsService)
+        public AdminController(IPostsService postsService, IViewModelFactory viewModelFactory)
         {
             this.postsService = postsService;
+            this.viewModelFactory = viewModelFactory;
         }
 
         public ActionResult Index()
@@ -32,10 +35,9 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
                 .MapTo<PostViewModel>()
                 .ToList();
 
-            var viewModel = new PostsCollectionViewModel()
-            {
-                Posts = posts
-            };
+            var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
+
+            viewModel.Posts = posts;
 
             return View(viewModel);
         }
@@ -55,10 +57,9 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
                 .MapTo<PostViewModel>()
                 .ToList();
 
-            var viewModel = new PostsCollectionViewModel()
-            {
-                Posts = posts
-            };
+            var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
+
+            viewModel.Posts = posts;
 
             return View(viewModel);
         }

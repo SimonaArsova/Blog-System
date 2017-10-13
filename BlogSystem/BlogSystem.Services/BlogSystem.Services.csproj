@@ -71,6 +71,10 @@
       <Project>{C204213D-871C-486C-8146-EABDC378F3DA}</Project>
       <Name>BlogSystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BlogSystem.Factories\BlogSystem.Factories.csproj">
+      <Project>{17C35CCF-265F-4903-B651-0CBCDA3A51B3}</Project>
+      <Name>BlogSystem.Factories</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
