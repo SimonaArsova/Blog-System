@@ -1,4 +1,5 @@
 ﻿using BlogSystem.Data.Model.Contracts;
+using Providers.Contracts;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -10,10 +11,12 @@ namespace BlogSystem.Data.Repositories
         where T : class, IDeletable
     {
         private readonly MsSqlDbContext context;
+        private readonly IDateTimeProvider dateTimeProvider;
 
-        public EfRepository(MsSqlDbContext context)
+        public EfRepository(MsSqlDbContext context, IDateTimeProvider dateTimeProvider)
         {
             this.context = context;
+            this.dateTimeProvider = dateTimeProvider;
         }
 
         public IQueryable<T> All
@@ -63,7 +66,7 @@ namespace BlogSystem.Data.Repositories
         public void Delete(T entity)
         {
             entity.IsDeleted = true;
-            entity.DeletedOn = DateTime.Now;
+            entity.DeletedOn = dateTimeProvider.GetCurrentDate();
 
             var entry = this.context.Entry(entity);
             entry.State = EntityState.Modified;
@@ -72,7 +75,7 @@ namespace BlogSystem.Data.Repositories
         public void Restore(T entity)
         {
             entity.IsDeleted = false;
-            entity.DeletedOn = DateTime.Now;
+            entity.DeletedOn = dateTimeProvider.GetCurrentDate();
 
             var entry = this.context.Entry(entity);
             entry.State = EntityState.Modified;

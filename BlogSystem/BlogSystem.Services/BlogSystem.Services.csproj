@@ -75,6 +75,10 @@
       <Project>{17C35CCF-265F-4903-B651-0CBCDA3A51B3}</Project>
       <Name>BlogSystem.Factories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Providers\Providers.csproj">
+      <Project>{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}</Project>
+      <Name>Providers</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

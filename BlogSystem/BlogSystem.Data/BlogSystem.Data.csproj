@@ -83,6 +83,10 @@
       <Project>{EDC546C1-CF4E-4A55-899D-F6D5D8ACA696}</Project>
       <Name>BlogSystem.Data.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Providers\Providers.csproj">
+      <Project>{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}</Project>
+      <Name>Providers</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710121819209_Initial.resx">

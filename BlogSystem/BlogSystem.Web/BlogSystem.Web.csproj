@@ -320,6 +320,10 @@
       <Project>{86de4c2c-b298-465f-8b9b-fd924ca5fd8a}</Project>
       <Name>BlogSystem.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Providers\Providers.csproj">
+      <Project>{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}</Project>
+      <Name>Providers</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

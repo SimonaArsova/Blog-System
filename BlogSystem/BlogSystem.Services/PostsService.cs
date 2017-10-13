@@ -3,6 +3,7 @@ using BlogSystem.Data.Repositories;
 using BlogSystem.Data.SaveContext;
 using BlogSystem.Factories;
 using BlogSystem.Services.Contracts;
+using Providers.Contracts;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -16,14 +17,27 @@ namespace BlogSystem.Services
         private readonly IUserService userService;
         private readonly ICategoryService categoryService;
         private readonly IPostFactory postFactory;
+        private readonly IDateTimeProvider dateTimeProvider;
+        private readonly IGuidProvider guidProvider;
 
-        public PostsService(IEfRepository<Post> postsRepo, IPostFactory postFactory, ISaveContext context, IUserService userService, ICategoryService categoryService)
+        public PostsService
+            (
+            IEfRepository<Post> postsRepo, 
+            IPostFactory postFactory, 
+            ISaveContext context, 
+            IUserService userService, 
+            ICategoryService categoryService,
+            IDateTimeProvider dateTimeProvider,
+            IGuidProvider guidProvider
+            )
         {
             this.postsRepo = postsRepo;
             this.postFactory = postFactory;
             this.context = context;
             this.userService = userService;
             this.categoryService = categoryService;
+            this.dateTimeProvider = dateTimeProvider;
+            this.guidProvider = guidProvider;
         }
 
         public IQueryable<Post> GetAll()
@@ -60,9 +74,9 @@ namespace BlogSystem.Services
 
         public void Create(string title, string categoryId, string content, string image, string userId)
         {
-            Guid id = Guid.NewGuid();
+            Guid id = this.guidProvider.CreateGuid();
             User user = this.userService.GetById(userId);
-            DateTime createdOn = DateTime.Now;
+            DateTime createdOn = this.dateTimeProvider.GetCurrentDate();
             Category category = this.categoryService.GetById(categoryId);
             
             Post post = this.postFactory.CreatePost(title, category, content, image, user);

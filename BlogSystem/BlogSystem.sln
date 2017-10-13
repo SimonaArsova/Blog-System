@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.Factories", "Blo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Factories", "Factories", "{D300F07E-24E3-4398-8DB8-BF01D1D7E41A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{F55D93F1-D66C-4F34-A592-3ECB280A5583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Providers", "Providers\Providers.csproj", "{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{17C35CCF-265F-4903-B651-0CBCDA3A51B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17C35CCF-265F-4903-B651-0CBCDA3A51B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17C35CCF-265F-4903-B651-0CBCDA3A51B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F89BD50E-A4A6-4024-A8FA-10DF54308F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,7 @@ Global
 		{86DE4C2C-B298-465F-8B9B-FD924CA5FD8A} = {A1444F0A-5AD9-4EC0-A952-EC5E81447C0E}
 		{33BD75AA-B217-48A4-80E3-F81AABDEDA1A} = {86235806-839B-4D03-AD5F-C85ECE40F9D1}
 		{17C35CCF-265F-4903-B651-0CBCDA3A51B3} = {D300F07E-24E3-4398-8DB8-BF01D1D7E41A}
+		{F89BD50E-A4A6-4024-A8FA-10DF54308F4C} = {F55D93F1-D66C-4F34-A592-3ECB280A5583}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {494C8027-821C-4C68-AEA9-C1291617517E}
