@@ -11,9 +11,9 @@ namespace BlogSystem.Data
 {
     public class SaveContext : ISaveContext
     {
-        private readonly IMsSqlDbContext context;
+        private readonly DbContext context;
 
-        public SaveContext(IMsSqlDbContext context)
+        public SaveContext(DbContext context)
         {
             Guard.WhenArgument(context, "DbContext").IsNull().Throw();
 

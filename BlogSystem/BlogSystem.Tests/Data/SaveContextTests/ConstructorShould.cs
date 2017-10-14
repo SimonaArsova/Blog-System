@@ -3,6 +3,7 @@ using System;
 using Moq;
 using BlogSystem.Data;
 using BlogSystem.Data.Contracts;
+using System.Data.Entity;
 
 namespace BlogSystem.Tests.Data.SaveContextTests
 {
@@ -20,7 +21,7 @@ namespace BlogSystem.Tests.Data.SaveContextTests
         public void NotThrow_WhenDbContextIsProvided()
         {
             // Arrange
-            var mockedDbContext = new Mock<IMsSqlDbContext>();
+            var mockedDbContext = new Mock<DbContext>();
 
             // Act, Assert
             Assert.DoesNotThrow(() => new SaveContext(mockedDbContext.Object));
@@ -30,7 +31,7 @@ namespace BlogSystem.Tests.Data.SaveContextTests
         public void InitializeProperly_WhenProperDbContextIsProvided()
         {
             // Arrange
-            var mockedDbContext = new Mock<IMsSqlDbContext>();
+            var mockedDbContext = new Mock<DbContext>();
 
             // Act
             var unitOfWork = new SaveContext(mockedDbContext.Object);
