@@ -1,7 +1,9 @@
 ﻿using BlogSystem.Services;
+using BlogSystem.Services.Contracts;
 using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Infrastructure.Attributes;
 using BlogSystem.Web.Infrastructure.Factories;
+using BlogSystem.Web.Models.Categories;
 using BlogSystem.Web.Models.Posts;
 using System;
 using System.Linq;
@@ -13,11 +15,13 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private readonly IPostsService postsService;
+        private readonly ICategoryService categoryService;
         private readonly IViewModelFactory viewModelFactory;
 
-        public AdminController(IPostsService postsService, IViewModelFactory viewModelFactory)
+        public AdminController(IPostsService postsService, ICategoryService categoryService, IViewModelFactory viewModelFactory)
         {
             this.postsService = postsService;
+            this.categoryService = categoryService;
             this.viewModelFactory = viewModelFactory;
         }
 
@@ -69,6 +73,21 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
         {
             this.postsService.RestorePost(id);
             return RedirectToAction("RestorePost");
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(CategoryViewModel category)
+        {
+            if (ModelState.IsValid)
+            {
+                this.categoryService.Create(category.Name);
+
+                return this.RedirectToAction("Index", "Posts", new { area = "" });
+            }
+            else
+            {
+                return this.RedirectToAction("Index");
+            }
         }
 
 

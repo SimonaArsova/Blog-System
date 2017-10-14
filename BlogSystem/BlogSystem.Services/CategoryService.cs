@@ -1,5 +1,6 @@
 ﻿using BlogSystem.Data.Contracts;
 using BlogSystem.Data.Model;
+using BlogSystem.Factories;
 using BlogSystem.Services.Contracts;
 using Providers.Contracts;
 using System;
@@ -12,11 +13,13 @@ namespace BlogSystem.Services
         private readonly IEfRepository<Category> categoryRepo;
         private readonly ISaveContext context;
         private readonly IGuidProvider guidProvider;
+        private readonly ICategoryFactory categoryFactory;
 
-        public CategoryService(IEfRepository<Category> categoryRepo, ISaveContext context, IGuidProvider guidProvider)
+        public CategoryService(IEfRepository<Category> categoryRepo, ISaveContext context, ICategoryFactory categoryFactory, IGuidProvider guidProvider)
         {
             this.categoryRepo = categoryRepo ?? throw new ArgumentNullException(nameof(categoryRepo));
             this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this.categoryFactory = categoryFactory ?? throw new ArgumentNullException(nameof(categoryFactory));
             this.guidProvider = guidProvider ?? throw new ArgumentNullException(nameof(guidProvider));
         }
 
@@ -28,6 +31,14 @@ namespace BlogSystem.Services
         public IQueryable<Category> GetAll()
         {
             return this.categoryRepo.All;
+        }
+
+        public void Create(string name)
+        {
+            Category category = this.categoryFactory.CreateCategory(name);
+            this.categoryRepo.Add(category);
+
+            context.SaveChanges();
         }
     }
 }

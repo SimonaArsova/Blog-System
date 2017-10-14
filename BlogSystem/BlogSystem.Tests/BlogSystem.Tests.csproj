@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\EfRepositoryTests\AllIncludingDeletedTests.cs" />
     <Compile Include="Data\EfRepositoryTests\AllShould.cs" />
     <Compile Include="Data\EfRepositoryTests\ConstructorShould.cs" />
     <Compile Include="Data\SaveContextTests\CommitShould.cs" />

@@ -8,5 +8,7 @@ namespace BlogSystem.Services.Contracts
         Category GetById(string id);
 
         IQueryable<Category> GetAll();
+
+        void Create(string name);
     }
 }
