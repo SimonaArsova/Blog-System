@@ -1,4 +1,5 @@
-﻿using BlogSystem.Data.Model;
+﻿using BlogSystem.Data.Contracts;
+using BlogSystem.Data.Model;
 using BlogSystem.Data.Model.Contracts;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BlogSystem.Data
 {
-    public class MsSqlDbContext : IdentityDbContext<User>
+    public class MsSqlDbContext : IdentityDbContext<User>, IMsSqlDbContext
     {
         public MsSqlDbContext()
             : base("LocalConnection", throwIfV1Schema: false)

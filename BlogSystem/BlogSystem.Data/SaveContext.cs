@@ -1,4 +1,5 @@
-﻿using Bytes2you.Validation;
+﻿using BlogSystem.Data.Contracts;
+using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogSystem.Data.SaveContext
+namespace BlogSystem.Data
 {
     public class SaveContext : ISaveContext
     {
-        private readonly DbContext context;
+        private readonly IMsSqlDbContext context;
 
-        public SaveContext(DbContext context)
+        public SaveContext(IMsSqlDbContext context)
         {
             Guard.WhenArgument(context, "DbContext").IsNull().Throw();
 

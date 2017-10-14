@@ -13,14 +13,13 @@ namespace BlogSystem.Web.App_Start
     using System.Data.Entity;
     using BlogSystem.Data;
     using Ninject.Extensions.Conventions;
-    using BlogSystem.Data.Repositories;
-    using BlogSystem.Data.SaveContext;
     using BlogSystem.Services.Contracts;
     using AutoMapper;
     using BlogSystem.Factories;
     using Ninject.Extensions.Factory;
     using BlogSystem.Web.Infrastructure.Factories;
     using Providers.Contracts;
+    using BlogSystem.Data.Contracts;
 
     public static class NinjectWebCommon 
     {
@@ -97,7 +96,7 @@ namespace BlogSystem.Web.App_Start
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<ISaveContext>().To<SaveContext>();
             kernel.Bind<IMapper>().To<Mapper>();
-            kernel.Bind<IUserFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IUserFactory>().ToFactory().InSingletonScope(); 
             kernel.Bind<ICategoryFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IPostFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IViewModelFactory>().ToFactory().InSingletonScope();

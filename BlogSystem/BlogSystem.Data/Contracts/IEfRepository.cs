@@ -1,7 +1,7 @@
 ﻿using BlogSystem.Data.Model.Contracts;
 using System.Linq;
 
-namespace BlogSystem.Data.Repositories
+namespace BlogSystem.Data.Contracts
 {
     public interface IEfRepository<T> where T : class, IDeletable
     {

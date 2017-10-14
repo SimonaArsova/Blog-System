@@ -1,6 +1,5 @@
-﻿using BlogSystem.Data.Model;
-using BlogSystem.Data.Repositories;
-using BlogSystem.Data.SaveContext;
+﻿using BlogSystem.Data.Contracts;
+using BlogSystem.Data.Model;
 using BlogSystem.Factories;
 using BlogSystem.Services.Contracts;
 using Providers.Contracts;
@@ -22,7 +21,7 @@ namespace BlogSystem.Services
 
         public PostsService
             (
-            IEfRepository<Post> postsRepo, 
+            IEfRepository<Post> postsRepo,
             IPostFactory postFactory, 
             ISaveContext context, 
             IUserService userService, 
@@ -31,13 +30,13 @@ namespace BlogSystem.Services
             IGuidProvider guidProvider
             )
         {
-            this.postsRepo = postsRepo;
-            this.postFactory = postFactory;
-            this.context = context;
-            this.userService = userService;
-            this.categoryService = categoryService;
-            this.dateTimeProvider = dateTimeProvider;
-            this.guidProvider = guidProvider;
+            this.postsRepo = postsRepo ?? throw new ArgumentNullException(nameof(postsRepo));
+            this.postFactory = postFactory ?? throw new ArgumentNullException(nameof(postFactory));
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this.userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            this.categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
+            this.guidProvider = guidProvider ?? throw new ArgumentNullException(nameof(guidProvider));
         }
 
         public IQueryable<Post> GetAll()
@@ -48,6 +47,11 @@ namespace BlogSystem.Services
         public IQueryable<Post> GetDeleted()
         {
             return this.postsRepo.Deleted;
+        }
+
+        public IQueryable<Post> GetAllIncludingDeleted()
+        {
+            return this.postsRepo.AllIncludingDeleted;
         }
 
         public void DeletePost(Guid id)

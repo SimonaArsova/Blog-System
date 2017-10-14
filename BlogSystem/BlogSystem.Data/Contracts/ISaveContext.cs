@@ -1,4 +1,4 @@
-﻿namespace BlogSystem.Data.SaveContext
+﻿namespace BlogSystem.Data.Contracts
 {
     public interface ISaveContext
     {

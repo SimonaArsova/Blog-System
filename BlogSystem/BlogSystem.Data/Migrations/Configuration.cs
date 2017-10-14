@@ -7,8 +7,6 @@ namespace BlogSystem.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using System.Web;
-    using BlogSystem.Data.SaveContext;
 
     public sealed class Configuration : DbMigrationsConfiguration<BlogSystem.Data.MsSqlDbContext>
     {

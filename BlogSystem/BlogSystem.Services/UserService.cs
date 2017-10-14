@@ -1,7 +1,7 @@
-﻿using BlogSystem.Data.Model;
-using BlogSystem.Data.Repositories;
-using BlogSystem.Data.SaveContext;
+﻿using BlogSystem.Data.Contracts;
+using BlogSystem.Data.Model;
 using BlogSystem.Services.Contracts;
+using System;
 
 namespace BlogSystem.Services
 {
@@ -12,8 +12,8 @@ namespace BlogSystem.Services
 
         public UserService(IEfRepository<User> userRepo, ISaveContext context)
         {
-            this.userRepo = userRepo;
-            this.context = context;
+            this.userRepo = userRepo ?? throw new ArgumentNullException(nameof(userRepo));
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public User GetById(string id)

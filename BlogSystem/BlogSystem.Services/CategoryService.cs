@@ -1,6 +1,5 @@
-﻿using BlogSystem.Data.Model;
-using BlogSystem.Data.Repositories;
-using BlogSystem.Data.SaveContext;
+﻿using BlogSystem.Data.Contracts;
+using BlogSystem.Data.Model;
 using BlogSystem.Services.Contracts;
 using Providers.Contracts;
 using System;
@@ -16,9 +15,9 @@ namespace BlogSystem.Services
 
         public CategoryService(IEfRepository<Category> categoryRepo, ISaveContext context, IGuidProvider guidProvider)
         {
-            this.categoryRepo = categoryRepo;
-            this.context = context;
-            this.guidProvider = guidProvider;
+            this.categoryRepo = categoryRepo ?? throw new ArgumentNullException(nameof(categoryRepo));
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this.guidProvider = guidProvider ?? throw new ArgumentNullException(nameof(guidProvider));
         }
 
         public Category GetById(string id)

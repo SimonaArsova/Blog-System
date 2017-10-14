@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IMsSqlDbContext.cs" />
     <Compile Include="Migrations\201710121819209_Initial.cs" />
     <Compile Include="Migrations\201710121819209_Initial.Designer.cs">
       <DependentUpon>201710121819209_Initial.cs</DependentUpon>
@@ -65,10 +66,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EfRepository.cs" />
-    <Compile Include="Repositories\Contracts\IEfRepository.cs" />
-    <Compile Include="SaveContext\Contracts\ISaveContext.cs" />
-    <Compile Include="SaveContext\SaveContext.cs" />
+    <Compile Include="EfRepository.cs" />
+    <Compile Include="Contracts\IEfRepository.cs" />
+    <Compile Include="Contracts\ISaveContext.cs" />
+    <Compile Include="SaveContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

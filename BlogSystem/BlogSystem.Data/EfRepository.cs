@@ -1,11 +1,12 @@
-﻿using BlogSystem.Data.Model.Contracts;
+﻿using BlogSystem.Data.Contracts;
+using BlogSystem.Data.Model.Contracts;
 using Providers.Contracts;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
-namespace BlogSystem.Data.Repositories
+namespace BlogSystem.Data
 {
     public class EfRepository<T> : IEfRepository<T>
         where T : class, IDeletable
