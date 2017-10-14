@@ -16,8 +16,8 @@ namespace BlogSystem.Data
 
         public EfRepository(MsSqlDbContext context, IDateTimeProvider dateTimeProvider)
         {
-            this.context = context;
-            this.dateTimeProvider = dateTimeProvider;
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
         }
 
         public IQueryable<T> All
