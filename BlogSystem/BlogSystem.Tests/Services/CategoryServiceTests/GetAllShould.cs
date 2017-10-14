@@ -1,5 +1,6 @@
 ﻿using BlogSystem.Data.Contracts;
 using BlogSystem.Data.Model;
+using BlogSystem.Factories;
 using BlogSystem.Services;
 using Moq;
 using NUnit.Framework;
@@ -22,8 +23,9 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             var mockedRepository = new Mock<IEfRepository<Category>>();
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var mockedCategoryFactory = new Mock<ICategoryFactory>();
 
-            var categoryService = new CategoryService(mockedRepository.Object, mockedContext.Object, mockedGuidProvider.Object);
+            var categoryService = new CategoryService(mockedRepository.Object, mockedContext.Object, mockedCategoryFactory.Object, mockedGuidProvider.Object);
 
             //Act
             categoryService.GetAll();
@@ -43,8 +45,9 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             mockedRepository.Setup(r => r.All).Returns(categories);
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var mockedCategoryFactory = new Mock<ICategoryFactory>();
 
-            var categoryService = new CategoryService(mockedRepository.Object, mockedContext.Object, mockedGuidProvider.Object);
+            var categoryService = new CategoryService(mockedRepository.Object, mockedContext.Object, mockedCategoryFactory.Object, mockedGuidProvider.Object);
 
             //Act
             var result = categoryService.GetAll();

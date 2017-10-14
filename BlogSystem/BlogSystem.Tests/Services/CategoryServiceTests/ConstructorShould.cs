@@ -1,5 +1,6 @@
 ﻿using BlogSystem.Data.Contracts;
 using BlogSystem.Data.Model;
+using BlogSystem.Factories;
 using BlogSystem.Services;
 using Moq;
 using NUnit.Framework;
@@ -22,9 +23,10 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             var mockedRepository = new Mock<IEfRepository<Category>>();
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var categoryFactory = new Mock<ICategoryFactory>();
 
             // Act, Assert
-            Assert.Throws<ArgumentNullException>(() => new CategoryService(null, mockedContext.Object, mockedGuidProvider.Object));
+            Assert.Throws<ArgumentNullException>(() => new CategoryService(null, mockedContext.Object, categoryFactory.Object, mockedGuidProvider.Object ));
         }
 
         [Test]
@@ -34,9 +36,23 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             var mockedRepository = new Mock<IEfRepository<Category>>();
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var categoryFactory = new Mock<ICategoryFactory>();
 
             // Act, Assert
-            Assert.Throws<ArgumentNullException>(() => new CategoryService(mockedRepository.Object, null, mockedGuidProvider.Object));
+            Assert.Throws<ArgumentNullException>(() => new CategoryService(mockedRepository.Object, null, categoryFactory.Object, mockedGuidProvider.Object));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenFactoryIsNull()
+        {
+            // Arrange
+            var mockedRepository = new Mock<IEfRepository<Category>>();
+            var mockedContext = new Mock<ISaveContext>();
+            var mockedGuidProvider = new Mock<IGuidProvider>();
+            var categoryFactory = new Mock<ICategoryFactory>();
+
+            // Act, Assert
+            Assert.Throws<ArgumentNullException>(() => new CategoryService(mockedRepository.Object, mockedContext.Object, null, mockedGuidProvider.Object));
         }
 
         [Test]
@@ -46,9 +62,10 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             var mockedRepository = new Mock<IEfRepository<Category>>();
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var categoryFactory = new Mock<ICategoryFactory>();
 
             // Act, Assert
-            Assert.Throws<ArgumentNullException>(() => new CategoryService(mockedRepository.Object, mockedContext.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new CategoryService(mockedRepository.Object, mockedContext.Object, categoryFactory.Object, null));
         }
 
 
@@ -59,9 +76,10 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             var mockedRepository = new Mock<IEfRepository<Category>>();
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var categoryFactory = new Mock<ICategoryFactory>();
 
             // Act, Assert
-            Assert.DoesNotThrow(() => new CategoryService(mockedRepository.Object, mockedContext.Object, mockedGuidProvider.Object));
+            Assert.DoesNotThrow(() => new CategoryService(mockedRepository.Object, mockedContext.Object, categoryFactory.Object, mockedGuidProvider.Object));
         }
 
         [Test]
@@ -71,9 +89,10 @@ namespace BlogSystem.Tests.Services.CategoryServiceTests
             var mockedRepository = new Mock<IEfRepository<Category>>();
             var mockedContext = new Mock<ISaveContext>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
+            var mockedCategoryFactory = new Mock<ICategoryFactory>();
 
             // Act, Assert
-            var categoryService = new CategoryService(mockedRepository.Object, mockedContext.Object, mockedGuidProvider.Object);
+            var categoryService = new CategoryService(mockedRepository.Object, mockedContext.Object, mockedCategoryFactory.Object ,mockedGuidProvider.Object);
 
             Assert.IsNotNull(categoryService);
         }
