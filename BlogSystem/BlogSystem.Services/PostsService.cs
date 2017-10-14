@@ -88,5 +88,20 @@ namespace BlogSystem.Services
             context.SaveChanges();
         }
 
+        public void Update(Guid id, string title, string content, string image)
+        {
+            Post post = this.postsRepo.All
+                .Include(x => x.Author)
+                .Include(x => x.Category)
+                .FirstOrDefault(p => p.Id == id);
+
+            post.Title = title;
+            post.Content = content;
+            post.Image = image;
+
+            this.postsRepo.Update(post);
+            context.SaveChanges();
+        }
+
     }
 }

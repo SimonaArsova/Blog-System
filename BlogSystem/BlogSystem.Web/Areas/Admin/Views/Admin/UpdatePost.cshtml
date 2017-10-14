@@ -1,0 +1,20 @@
+﻿
+@using BlogSystem.Web.Models.Posts
+@model PostsCollectionViewModel
+
+@{
+    ViewBag.Title = "UpdatePost";
+}
+
+<div id="post" class="row">
+    @foreach (var post in Model.Posts)
+    {
+        <div class="col-md-4">
+            <h2>@post.Title</h2>
+            <p>@post.AuthorEmail - @post.PostedOn</p>
+
+            <a href='@Url.Action("EditPost", "Admin", new { id = post.Id})'>Edit post
+            </a>
+        </div>
+    }
+</div>
