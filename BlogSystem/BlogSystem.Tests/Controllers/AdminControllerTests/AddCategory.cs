@@ -49,10 +49,10 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
             var mockedViewModelFactory = new Mock<IViewModelFactory>();
             var mockedGuidProvider = new Mock<IGuidProvider>();
 
-            // Act, Assert
+            // Act
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.AddCategory(category);
 
+            // Assert
             controller
                 .WithCallTo(c => c.AddCategory(category))
                 .ShouldRedirectTo<PostsController>(c => c.Index());

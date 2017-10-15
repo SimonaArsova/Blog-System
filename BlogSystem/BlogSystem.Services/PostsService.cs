@@ -41,12 +41,16 @@ namespace BlogSystem.Services
 
         public IQueryable<Post> GetAll()
         {
-            return this.postsRepo.All;
+            return this.postsRepo.All
+                .Include(x => x.Author)
+                .Include(x => x.Category);
         }
 
         public IQueryable<Post> GetDeleted()
         {
-            return this.postsRepo.Deleted;
+            return this.postsRepo.Deleted
+                .Include(x => x.Author)
+                .Include(x => x.Category);
         }
 
         public IQueryable<Post> GetAllIncludingDeleted()

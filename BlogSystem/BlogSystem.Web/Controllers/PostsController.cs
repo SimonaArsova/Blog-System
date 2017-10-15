@@ -43,12 +43,15 @@ namespace BlogSystem.Web.Controllers
         {
             var posts = this.postsService
                 .GetAll()
-                .MapTo<PostViewModel>()
+                //.Select(x => this.viewModelFactory.CreatePostViewModel(x.Id, x.Title, x.Category.Name, x.Content, x.Image, x.Author.Email, (DateTime)x.CreatedOn))
+                //.MapTo<PostViewModel>()
                 .ToList();
+
+            var viewPosts = posts.Select(x => this.viewModelFactory.CreatePostViewModel(x.Id, x.Title, x.Category.Name, x.Content, x.Image, x.Author.Email, (DateTime)x.CreatedOn)).ToList();
 
             var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
 
-            viewModel.Posts = posts;
+            viewModel.Posts = viewPosts;
             
             return View(viewModel);
         }
@@ -59,10 +62,13 @@ namespace BlogSystem.Web.Controllers
             var guid = this.guidProvider.CreateGuidFromString(id);
             var post = this.postsService
                 .GetAll()
-                .MapTo<PostViewModel>()
+                //.Select(x => this.viewModelFactory.CreatePostViewModel(x.Id, x.Title, x.Category.Name, x.Content, x.Image, x.Author.Email, (DateTime)x.CreatedOn))
+                //.MapTo<PostViewModel>()
                 .FirstOrDefault(p => p.Id == guid);
 
-            return View(post);
+            var viewPost = this.viewModelFactory.CreatePostViewModel(post.Id, post.Title, post.Category.Name, post.Content, post.Image, post.Author.Email, (DateTime)post.CreatedOn);
+
+            return View(viewPost);
         }
 
     }

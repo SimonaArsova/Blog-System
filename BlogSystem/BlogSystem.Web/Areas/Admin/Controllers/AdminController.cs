@@ -56,12 +56,13 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
         {
             var posts = this.postsService
                 .GetAll()
-                .MapTo<PostViewModel>()
                 .ToList();
+
+            var viewPosts = posts.Select(x => this.viewModelFactory.CreatePostViewModel(x.Id, x.Title, x.Category.Name, x.Content, x.Image, x.Author.Email, (DateTime)x.CreatedOn)).ToList();
 
             var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
 
-            viewModel.Posts = posts;
+            viewModel.Posts = viewPosts;
 
             return View(viewModel);
         }
@@ -78,12 +79,13 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
         {
             var posts = this.postsService
                 .GetDeleted()
-                .MapTo<PostViewModel>()
                 .ToList();
+
+            var viewPosts = posts.Select(x => this.viewModelFactory.CreatePostViewModel(x.Id, x.Title, x.Category.Name, x.Content, x.Image, x.Author.Email, (DateTime)x.CreatedOn)).ToList();
 
             var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
 
-            viewModel.Posts = posts;
+            viewModel.Posts = viewPosts;
 
             return View(viewModel);
         }
@@ -100,12 +102,13 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
         {
             var posts = this.postsService
                 .GetAll()
-                .MapTo<PostViewModel>()
                 .ToList();
+
+            var viewPosts = posts.Select(x => this.viewModelFactory.CreatePostViewModel(x.Id, x.Title, x.Category.Name, x.Content, x.Image, x.Author.Email, (DateTime)x.CreatedOn)).ToList();
 
             var viewModel = this.viewModelFactory.CreatePostsCollectionViewModel();
 
-            viewModel.Posts = posts;
+            viewModel.Posts = viewPosts;
 
             return View(viewModel);
         }
@@ -116,15 +119,17 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
             var guid = this.guidProvider.CreateGuidFromString(id);
             var post = this.postsService
                 .GetAll()
-                .MapTo<PostViewModel>()
                 .FirstOrDefault(p => p.Id == guid);
 
-            return View(post);
+            var viewPost = this.viewModelFactory.CreatePostViewModel(post.Id, post.Title, post.Category.Name, post.Content, post.Image, post.Author.Email, (DateTime)post.CreatedOn);
+
+            return View(viewPost);
         }
 
         [HttpPost]
         public ActionResult EditPost(PostViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 this.postsService.Update(model.Id, model.Title, model.Content, model.Image);
@@ -132,7 +137,7 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
             }
             else
             {
-                return this.RedirectToAction("Update", new { id = model.Id });
+                return this.RedirectToAction("UpdatePost", new { id = model.Id });
             }
         }
 

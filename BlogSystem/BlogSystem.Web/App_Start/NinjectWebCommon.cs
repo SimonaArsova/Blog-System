@@ -95,8 +95,7 @@ namespace BlogSystem.Web.App_Start
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<ISaveContext>().To<SaveContext>();
-            kernel.Bind<IMapper>().To<Mapper>();
-            kernel.Bind<IUserFactory>().ToFactory().InSingletonScope(); 
+            kernel.Bind<IUserFactory>().ToFactory().InSingletonScope();
             kernel.Bind<ICategoryFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IPostFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IViewModelFactory>().ToFactory().InSingletonScope();

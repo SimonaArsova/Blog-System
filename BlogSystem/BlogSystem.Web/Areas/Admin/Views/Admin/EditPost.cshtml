@@ -8,7 +8,7 @@
 @Styles.Render("~/Content/css/editPost")
 
 <div class="edit-wrapper">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(new { AuthorEmail = Model.AuthorEmail }))
     {
         @Html.AntiForgeryToken()
 
@@ -39,6 +39,8 @@
                     @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
                 </div>
             </div>
+            @*@Html.HiddenFor(AuthorEmail => Model.AuthorEmail)*@
+            @Html.HiddenFor(Category => Model.Category)
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">

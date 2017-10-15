@@ -14,6 +14,7 @@ namespace BlogSystem.Web.Infrastructure.Factories
         CreatePostViewModel CreateCreatePostViewModel();
         CreatePostViewModel CreateCreatePostViewModel(Guid id, string title, string category, string content, string image);
         PostViewModel CreatePostViewModel();
+        PostViewModel CreatePostViewModel(Guid id, string title, string category, string content, string image, string authorEmail, DateTime postedOn);
         PostsCollectionViewModel CreatePostsCollectionViewModel();
     }
 }
