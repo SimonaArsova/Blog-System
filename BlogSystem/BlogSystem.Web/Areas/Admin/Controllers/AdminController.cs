@@ -23,6 +23,22 @@ namespace BlogSystem.Web.Areas.Admin.Controllers
 
         public AdminController(IPostsService postsService, ICategoryService categoryService, IViewModelFactory viewModelFactory,IGuidProvider guidProvider)
         {
+            if(postsService == null)
+            {
+                throw new ArgumentNullException(nameof(postsService));
+            }
+            if (categoryService == null)
+            {
+                throw new ArgumentNullException(nameof(categoryService));
+            }
+            if (viewModelFactory == null)
+            {
+                throw new ArgumentNullException(nameof(viewModelFactory));
+            }
+            if (guidProvider == null)
+            {
+                throw new ArgumentNullException(nameof(guidProvider));
+            }
             this.postsService = postsService;
             this.categoryService = categoryService;
             this.viewModelFactory = viewModelFactory;
