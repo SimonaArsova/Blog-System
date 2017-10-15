@@ -1,0 +1,28 @@
+﻿.form-horizontal {
+    width: 350px;
+    background-color: white;
+    border: 1px solid #665851;
+    border-radius: 5px;
+}
+
+.edit-post-title {
+    color: white;
+    text-transform: uppercase;
+    font-size: 20px;
+    background-color: #665851;
+    text-align: center;
+    padding:15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.edit-wrapper{
+    display: flex;
+    justify-content: center;
+    margin:50px;
+}
