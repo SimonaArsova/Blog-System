@@ -49,6 +49,9 @@ namespace BlogSystem.Web
 
             bundles.Add(new StyleBundle("~/Content/css/editPost").Include(
                      "~/Content/editPost.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/showPosts").Include(
+                    "~/Content/showPosts.css"));
         }
     }
 }

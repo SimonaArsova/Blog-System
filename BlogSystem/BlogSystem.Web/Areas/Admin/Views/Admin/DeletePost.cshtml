@@ -5,17 +5,24 @@
 @{
     ViewBag.Title = "DeletePost";
 }
+
+@Styles.Render("~/Content/css/showPosts")
+
 <div id="post" class="row">
     @foreach (var post in Model.Posts)
     {
-        <div class="col-md-4">
-            <h2>@post.Title</h2>
-            <p>@post.AuthorEmail - @post.PostedOn</p>
+        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4 ">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>@post.Title</h2>
+                    <p>@post.AuthorEmail - @post.PostedOn</p>
 
-            @using (Html.BeginForm("DeletePost", "Admin", new { id = post.Id, area = "Admin" }, FormMethod.Post))
-            {
-                <input type="submit" value="Delete" />
-            }
+                    @using (Html.BeginForm("DeletePost", "Admin", new { id = post.Id, area = "Admin" }, FormMethod.Post))
+                {
+                        <input type="submit" value="Delete" class="button-post"/>
+                    }
+                </div>
+            </div>
         </div>
     }
 </div>
