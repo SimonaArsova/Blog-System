@@ -1,29 +1,23 @@
-﻿using AutoMapper;
-using BlogSystem.Data.Model;
-using BlogSystem.Services;
+﻿using BlogSystem.Services;
 using BlogSystem.Services.Contracts;
 using BlogSystem.Web.Areas.Admin.Controllers;
 using BlogSystem.Web.Infrastructure.Factories;
-using BlogSystem.Web.Models.Posts;
 using Moq;
 using NUnit.Framework;
 using Providers.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TestStack.FluentMVCTesting;
 
 namespace BlogSystem.Tests.Controllers.AdminControllerTests
 {
-    [TestFixture]
-    public class DeletePostShould
+    public class RestorePostShould
     {
         [Test]
-        public void CallPostsServiceDeletePost()
+        public void CallPostsServiceRestorePost()
         {
             // Arrange
             var id = Guid.NewGuid();
@@ -34,9 +28,9 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Act, Assert
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.DeletePost(id);
+            controller.RestorePost(id);
 
-            mockedPostsService.Verify(s => s.DeletePost(id), Times.Once);
+            mockedPostsService.Verify(s => s.RestorePost(id), Times.Once);
         }
 
         [Test]
@@ -51,11 +45,11 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Act, Assert
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.DeletePost(id);
+            controller.RestorePost(id);
 
             controller
-                .WithCallTo(c => c.DeletePost(id))
-                .ShouldRedirectTo(c => c.DeletePost());
+                .WithCallTo(c => c.RestorePost(id))
+                .ShouldRedirectTo(c => c.RestorePost());
         }
     }
 }

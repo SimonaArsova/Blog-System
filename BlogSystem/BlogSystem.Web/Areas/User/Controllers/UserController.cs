@@ -4,6 +4,7 @@ using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Models.Categories;
 using BlogSystem.Web.Models.Posts;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -17,6 +18,14 @@ namespace BlogSystem.Web.Areas.User.Controllers
 
         public UserController(IPostsService postsService, ICategoryService categoryService)
         {
+            if (postsService == null)
+            {
+                throw new ArgumentNullException(nameof(postsService));
+            }
+            if (categoryService == null)
+            {
+                throw new ArgumentNullException(nameof(categoryService));
+            }
             this.postsService = postsService;
             this.categoryService = categoryService;
         }

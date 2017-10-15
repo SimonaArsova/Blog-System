@@ -21,6 +21,18 @@ namespace BlogSystem.Web.Controllers
 
         public PostsController(IPostsService postsService, IViewModelFactory viewModelFactory, IGuidProvider guidProvider)
         {
+            if (postsService == null)
+            {
+                throw new ArgumentNullException(nameof(postsService));
+            }
+            if (viewModelFactory == null)
+            {
+                throw new ArgumentNullException(nameof(viewModelFactory));
+            }
+            if (guidProvider == null)
+            {
+                throw new ArgumentNullException(nameof(guidProvider));
+            }
             this.postsService = postsService;
             this.viewModelFactory = viewModelFactory;
             this.guidProvider = guidProvider;

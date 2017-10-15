@@ -1,18 +1,16 @@
-﻿using AutoMapper;
-using BlogSystem.Data.Model;
-using BlogSystem.Services;
+﻿using BlogSystem.Services;
 using BlogSystem.Services.Contracts;
 using BlogSystem.Web.Areas.Admin.Controllers;
+using BlogSystem.Web.Controllers;
 using BlogSystem.Web.Infrastructure.Factories;
+using BlogSystem.Web.Models.Categories;
 using BlogSystem.Web.Models.Posts;
 using Moq;
 using NUnit.Framework;
 using Providers.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TestStack.FluentMVCTesting;
@@ -20,13 +18,14 @@ using TestStack.FluentMVCTesting;
 namespace BlogSystem.Tests.Controllers.AdminControllerTests
 {
     [TestFixture]
-    public class DeletePostShould
+    public class EditPostShould
     {
         [Test]
-        public void CallPostsServiceDeletePost()
+        public void CallPostsServiceUpdate()
         {
             // Arrange
-            var id = Guid.NewGuid();
+            var post = new PostViewModel();
+
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
             var mockedViewModelFactory = new Mock<IViewModelFactory>();
@@ -34,16 +33,18 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Act, Assert
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.DeletePost(id);
+            controller.EditPost(post);
 
-            mockedPostsService.Verify(s => s.DeletePost(id), Times.Once);
+            mockedPostsService.Verify(s => s.Update(post.Id, post.Title, post.Content, post.Image), Times.Once);
         }
 
         [Test]
-        public void RedirectToCorrectPage()
+        public void RedirectToPosts()
         {
             // Arrange
-            var id = Guid.NewGuid();
+            var post = new PostViewModel();
+            var id = "id";
+
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
             var mockedViewModelFactory = new Mock<IViewModelFactory>();
@@ -51,11 +52,11 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Act, Assert
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.DeletePost(id);
+            controller.EditPost(post);
 
             controller
-                .WithCallTo(c => c.DeletePost(id))
-                .ShouldRedirectTo(c => c.DeletePost());
+                .WithCallTo(c => c.EditPost(post))
+                .ShouldRedirectTo<PostsController>(c => c.Details(id));
         }
     }
 }
