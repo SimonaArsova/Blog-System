@@ -106,6 +106,7 @@
     <Compile Include="Data\SaveContextTests\ConstructorShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoryServiceTests\ConstructorShould.cs" />
+    <Compile Include="Services\CategoryServiceTests\CreateShould.cs" />
     <Compile Include="Services\CategoryServiceTests\GetAllShould.cs" />
     <Compile Include="Services\CategoryServiceTests\GetByIdShould.cs" />
     <Compile Include="Services\PostsServiceTests\ConstructorShould.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Services\PostsServiceTests\GetAllShould.cs" />
     <Compile Include="Services\PostsServiceTests\GetDeletedShould.cs" />
     <Compile Include="Services\PostsServiceTests\RestorePostShould.cs" />
+    <Compile Include="Services\PostsServiceTests\UpdateShould.cs" />
     <Compile Include="Services\UserServiceTests\ConsturctorShould.cs" />
     <Compile Include="Services\UserServiceTests\GetByIdShould.cs" />
   </ItemGroup>
