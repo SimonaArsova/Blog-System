@@ -23,10 +23,14 @@ namespace BlogSystem.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+            
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/font-awesome").Include(
+                      "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(
                       "~/Content/login.css"));
@@ -39,6 +43,9 @@ namespace BlogSystem.Web
 
             bundles.Add(new StyleBundle("~/Content/css/details").Include(
                      "~/Content/details.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/adminPanel").Include(
+                     "~/Content/adminPanel.css"));
         }
     }
 }

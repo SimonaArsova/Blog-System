@@ -5,14 +5,57 @@
     ViewBag.Title = "Index";
 }
 
-@(Html.ActionLink("Delete post", "DeletePost", "Admin", new { area = "Admin" }, new { @class = "btn-lg btn-info" }))
+@Styles.Render("~/Content/css/font-awesome")
+@Styles.Render("~/Content/css/adminPanel")
 
-@(Html.ActionLink("Restore post", "RestorePost", "Admin", new { area = "Admin" }, new { @class = "btn-lg btn-info" }))
+<div class="admin-wrapper">
+    <h1 class="category-title">Posts</h1>
+    <div class="panel panel-default admin-panel">
+        <div class="panel-body">
+            <div class="panel-title">
+                Delete post
+            </div>
+            <a href="@Url.Action("DeletePost", "Admin", new { area = "Admin"})">
+                <i class="fa fa-trash-o fa-5x" aria_idden="true"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel panel-default admin-panel">
+        <div class="panel-body">
+            <div class="panel-title">
+                Restore post
+            </div>
+            <a href="@Url.Action("RestorePost", "Admin", new { area = "Admin"})">
+                <i class="fa fa-undo fa-5x" aria_idden="true"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel panel-default admin-panel">
+        <div class="panel-body">
+            <div class="panel-title">
+                Update post
+            </div>
+            <a href="@Url.Action("UpdatePost", "Admin", new { area = "Admin"})">
+                <i class="fa fa-edit fa-5x" aria_idden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>
 
-@(Html.ActionLink("Update post", "UpdatePost", "Admin", new { area = "Admin" }, new { @class = "btn-lg btn-info" }))
+<div class="admin-wrapper">
+    <h1 class="category-title">Categories</h1>
+    <div class="panel panel-default admin-panel">
+        <div class="panel-body">
+            <div class="panel-title">
+                Add category
+            </div>
+            <a href="" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-list fa-5x" aria_idden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>
 
-
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Category</button>
 
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -28,9 +71,9 @@
                 {
                     @Html.LabelFor(m => m.Name, new { @class = "control-label" })
                     <br />
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                    <br />
-                    <input type="submit" value="AddCategory" />
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        <br />
+                        <input type="submit" value="AddCategory" />
                 }
             </div>
         </div>

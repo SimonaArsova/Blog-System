@@ -1,0 +1,31 @@
+﻿.admin-wrapper>div{
+    display: inline-block;
+}
+
+.fa-5x {
+    font-size: 200px;
+    padding: 10px;
+    padding-top: 25px;
+    text-decoration: none;
+    color: #665851;
+}
+
+.admin-panel{
+    margin:10px;
+    width: 240px;
+    overflow:hidden;
+}
+
+.panel-title {
+    margin: -20px;
+    padding: 15px;
+    font-size: 20px;
+    color: white;
+    background-color: #665851;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.category-title {
+    color: white;
+}
