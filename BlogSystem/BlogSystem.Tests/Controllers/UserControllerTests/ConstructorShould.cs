@@ -1,13 +1,10 @@
 ﻿using BlogSystem.Services;
 using BlogSystem.Services.Contracts;
 using BlogSystem.Web.Areas.User.Controllers;
+using BlogSystem.Web.Infrastructure.Factories;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlogSystem.Tests.Controllers.UserControllerTests
 {
@@ -20,9 +17,10 @@ namespace BlogSystem.Tests.Controllers.UserControllerTests
             // Arrange
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
 
             // Act, Assert
-            Assert.Throws<ArgumentNullException>(() => new UserController(null, mockedCategoryService.Object));
+            Assert.Throws<ArgumentNullException>(() => new UserController(null, mockedCategoryService.Object, mockedViewModelFactory.Object));
         }
 
         [Test]
@@ -31,9 +29,11 @@ namespace BlogSystem.Tests.Controllers.UserControllerTests
             // Arrange
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
+
 
             // Act, Assert
-            Assert.Throws<ArgumentNullException>(() => new UserController(mockedPostsService.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new UserController(mockedPostsService.Object, null, mockedViewModelFactory.Object));
         }
 
         [Test]
@@ -42,9 +42,11 @@ namespace BlogSystem.Tests.Controllers.UserControllerTests
             // Arrange
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
+
 
             // Act, Assert
-            Assert.DoesNotThrow(() => new UserController(mockedPostsService.Object, mockedCategoryService.Object));
+            Assert.DoesNotThrow(() => new UserController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object));
         }
 
         [Test]
@@ -53,9 +55,11 @@ namespace BlogSystem.Tests.Controllers.UserControllerTests
             // Arrange
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
+
 
             // Act, Assert
-            var controller = new UserController(mockedPostsService.Object, mockedCategoryService.Object);
+            var controller = new UserController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object);
 
             Assert.NotNull(controller);
         }

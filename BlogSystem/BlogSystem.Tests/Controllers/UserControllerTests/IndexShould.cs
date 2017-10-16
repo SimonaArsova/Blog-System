@@ -1,6 +1,7 @@
 ﻿using BlogSystem.Services;
 using BlogSystem.Services.Contracts;
 using BlogSystem.Web.Areas.User.Controllers;
+using BlogSystem.Web.Infrastructure.Factories;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -21,9 +22,10 @@ namespace BlogSystem.Tests.Controllers.UserControllerTests
             // Arrange
             var mockedPostsService = new Mock<IPostsService>();
             var mockedCategoryService = new Mock<ICategoryService>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
 
             // Act, Assert
-            var controller = new UserController(mockedPostsService.Object, mockedCategoryService.Object);
+            var controller = new UserController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object);
 
             controller
                .WithCallTo(c => c.Index())
