@@ -32,3 +32,51 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-brand {
+    font-family: "Segoe Script", "Lucida Handwriting" ;
+    font-weight: bold;
+}
+
+.brand {
+    font-family: "Segoe Script", "Lucida Handwriting";
+    font-weight: bold;
+    font-size:60px;
+    color:white;
+    text-align:center;
+    margin:90px;
+}
+
+.home {
+    background-color: white;
+    color: #665851;
+    margin: 45px;
+    border: 1px solid #665851;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.home-title {
+    background-color: #665851;
+    color: white;
+    padding: 10px;
+    margin-top: -10px;
+    margin-left: -16px;
+    margin-right: -16px;
+    border-radius: 5px;
+}
+
+.home_button {
+    background-color: #665851;
+    color: white;
+    padding:10px;
+}
+
+.home_button:hover{
+    text-decoration: none;
+    color: white;
+}
+
+footer{
+    color:white;
+}
