@@ -10,6 +10,17 @@ namespace BlogSystem.Web.Models.Categories
 {
     public class CategoryViewModel : IMapFrom<Category>
     {
+        public CategoryViewModel()
+        {
+                
+        }
+
+        public CategoryViewModel(Guid id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
         public Guid Id { get; set; }
 
         [Required]

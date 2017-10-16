@@ -1,6 +1,7 @@
 ﻿using BlogSystem.Services;
 using BlogSystem.Services.Contracts;
 using BlogSystem.Web.Infrastructure;
+using BlogSystem.Web.Infrastructure.Factories;
 using BlogSystem.Web.Models.Categories;
 using BlogSystem.Web.Models.Posts;
 using Microsoft.AspNet.Identity;
@@ -15,8 +16,9 @@ namespace BlogSystem.Web.Areas.User.Controllers
     {
         private readonly IPostsService postsService;
         private readonly ICategoryService categoryService;
+        private readonly IViewModelFactory viewModelFactory;
 
-        public UserController(IPostsService postsService, ICategoryService categoryService)
+        public UserController(IPostsService postsService, ICategoryService categoryService, IViewModelFactory viewModelFactory)
         {
             if (postsService == null)
             {
@@ -26,8 +28,14 @@ namespace BlogSystem.Web.Areas.User.Controllers
             {
                 throw new ArgumentNullException(nameof(categoryService));
             }
+            if (viewModelFactory == null)
+            {
+                throw new ArgumentNullException(nameof(viewModelFactory));
+            }
+
             this.postsService = postsService;
             this.categoryService = categoryService;
+            this.viewModelFactory = viewModelFactory;
         }
 
         // GET: User/User
@@ -41,10 +49,12 @@ namespace BlogSystem.Web.Areas.User.Controllers
         {
             var categories = this.categoryService
              .GetAll()
-             .MapTo<CategoryViewModel>()
+             //.MapTo<CategoryViewModel>()
              .ToList();
 
-            SelectList list = new SelectList(categories, "Id", "Name");
+            var viewCategories = categories.Select(x => this.viewModelFactory.CreateCategoryViewModel(x.Id, x.Name)).ToList();
+
+            SelectList list = new SelectList(viewCategories, "Id", "Name");
 
             var viewModel = new CreatePostViewModel()
             {

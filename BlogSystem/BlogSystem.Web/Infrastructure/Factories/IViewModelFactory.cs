@@ -10,6 +10,7 @@ namespace BlogSystem.Web.Infrastructure.Factories
     public interface IViewModelFactory
     {
         CategoryViewModel CreateCategoryViewModel();
+        CategoryViewModel CreateCategoryViewModel(Guid id, string name);
         CategoriesCollectionViewModel CreateCategoriesCollectionViewModel();
         CreatePostViewModel CreateCreatePostViewModel();
         CreatePostViewModel CreateCreatePostViewModel(Guid id, string title, string category, string content, string image);

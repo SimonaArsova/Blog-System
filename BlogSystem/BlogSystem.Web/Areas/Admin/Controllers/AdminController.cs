@@ -1,11 +1,9 @@
 ﻿using BlogSystem.Services;
 using BlogSystem.Services.Contracts;
-using BlogSystem.Web.Infrastructure;
 using BlogSystem.Web.Infrastructure.Attributes;
 using BlogSystem.Web.Infrastructure.Factories;
 using BlogSystem.Web.Models.Categories;
 using BlogSystem.Web.Models.Posts;
-using Providers;
 using Providers.Contracts;
 using System;
 using System.Linq;
