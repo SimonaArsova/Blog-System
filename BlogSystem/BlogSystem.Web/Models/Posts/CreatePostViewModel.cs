@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace BlogSystem.Web.Models.Posts
 {
-    public class CreatePostViewModel : IMapFrom<Post>, IMapFrom<Category>, IHaveCustomMappings
+    public class CreatePostViewModel 
     {
         public CreatePostViewModel()
         {
@@ -45,12 +45,6 @@ namespace BlogSystem.Web.Models.Posts
         public string Image { get; set; }
 
         public IEnumerable<SelectListItem> Categories { get; set; }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            configuration.CreateMap<Category, CreatePostViewModel>()
-                .ForMember(createPostViewModel => createPostViewModel.Category, cfg => cfg.MapFrom(category => category.Name));
-        }
 
     }
 }

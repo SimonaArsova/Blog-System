@@ -8,7 +8,7 @@ using System.Web;
 
 namespace BlogSystem.Web.Models.Categories
 {
-    public class CategoryViewModel : IMapFrom<Category>
+    public class CategoryViewModel
     {
         public CategoryViewModel()
         {

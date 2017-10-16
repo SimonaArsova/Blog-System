@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlogSystem.Web.Models.Posts
 {
-    public class PostViewModel : IMapFrom<Post>, IHaveCustomMappings
+    public class PostViewModel
     {
         public PostViewModel()
         {
@@ -46,13 +46,5 @@ namespace BlogSystem.Web.Models.Posts
 
         [DataType(DataType.Date)]
         public DateTime PostedOn { get; set; }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            configuration.CreateMap<Post, PostViewModel>()
-                .ForMember(postViewModel => postViewModel.AuthorEmail, cfg => cfg.MapFrom(post => post.Author.Email))
-                .ForMember(postViewModel => postViewModel.PostedOn, cfg => cfg.MapFrom(post => post.CreatedOn))
-                .ForMember(postViewModel => postViewModel.Category, cfg => cfg.MapFrom(post => post.Category.Name));
-        }
     }
 }
