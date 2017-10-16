@@ -10,48 +10,15 @@ using Providers.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TestStack.FluentMVCTesting;
 
 namespace BlogSystem.Tests.Controllers.AdminControllerTests
 {
-    public class RestorePostShould
+    [TestFixture]
+    public class UpdatePostShould
     {
-        [Test]
-        public void CallPostsServiceRestorePost()
-        {
-            // Arrange
-            var id = Guid.NewGuid();
-            var mockedPostsService = new Mock<IPostsService>();
-            var mockedCategoryService = new Mock<ICategoryService>();
-            var mockedViewModelFactory = new Mock<IViewModelFactory>();
-            var mockedGuidProvider = new Mock<IGuidProvider>();
-
-            // Act, Assert
-            var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.RestorePost(id);
-
-            mockedPostsService.Verify(s => s.RestorePost(id), Times.Once);
-        }
-
-        [Test]
-        public void RedirectToCorrectPage()
-        {
-            // Arrange
-            var id = Guid.NewGuid();
-            var mockedPostsService = new Mock<IPostsService>();
-            var mockedCategoryService = new Mock<ICategoryService>();
-            var mockedViewModelFactory = new Mock<IViewModelFactory>();
-            var mockedGuidProvider = new Mock<IGuidProvider>();
-
-            // Act, Assert
-            var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.RestorePost(id);
-
-            controller
-                .WithCallTo(c => c.RestorePost(id))
-                .ShouldRedirectTo(c => c.RestorePost());
-        }
-
         [Test]
         public void CallPostsServiceGetAll()
         {
@@ -76,7 +43,7 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Arrange
             var mockedPostsService = new Mock<IPostsService>();
-            mockedPostsService.Setup(m => m.GetDeleted()).Returns(list.AsQueryable());
+            mockedPostsService.Setup(m => m.GetAll()).Returns(list.AsQueryable());
             var mockedCategoryService = new Mock<ICategoryService>();
             var mockedViewModelFactory = new Mock<IViewModelFactory>();
             mockedViewModelFactory.Setup(m => m.CreatePostsCollectionViewModel()).Returns(model);
@@ -84,9 +51,9 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Act, Assert
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.RestorePost();
+            controller.UpdatePost();
 
-            mockedPostsService.Verify(s => s.GetDeleted(), Times.Once);
+            mockedPostsService.Verify(s => s.GetAll(), Times.Once);
         }
 
         [Test]
@@ -111,7 +78,7 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
             };
 
             var mockedPostsService = new Mock<IPostsService>();
-            mockedPostsService.Setup(m => m.GetDeleted()).Returns(list.AsQueryable());
+            mockedPostsService.Setup(m => m.GetAll()).Returns(list.AsQueryable());
             var mockedCategoryService = new Mock<ICategoryService>();
             var mockedViewModelFactory = new Mock<IViewModelFactory>();
             mockedViewModelFactory.Setup(m => m.CreatePostsCollectionViewModel()).Returns(model);
@@ -119,7 +86,7 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
 
             // Act, Assert
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
-            controller.RestorePost();
+            controller.UpdatePost();
 
             mockedViewModelFactory.Verify(s => s.CreatePostsCollectionViewModel(), Times.Once);
         }
@@ -146,7 +113,7 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
             };
 
             var mockedPostsService = new Mock<IPostsService>();
-            mockedPostsService.Setup(m => m.GetDeleted()).Returns(list.AsQueryable());
+            mockedPostsService.Setup(m => m.GetAll()).Returns(list.AsQueryable());
             var mockedCategoryService = new Mock<ICategoryService>();
             var mockedViewModelFactory = new Mock<IViewModelFactory>();
             mockedViewModelFactory.Setup(m => m.CreatePostsCollectionViewModel()).Returns(model);
@@ -156,8 +123,9 @@ namespace BlogSystem.Tests.Controllers.AdminControllerTests
             var controller = new AdminController(mockedPostsService.Object, mockedCategoryService.Object, mockedViewModelFactory.Object, mockedGuidProvider.Object);
 
             controller
-                .WithCallTo(c => c.RestorePost())
+                .WithCallTo(c => c.UpdatePost())
                 .ShouldRenderDefaultView();
         }
+
     }
 }

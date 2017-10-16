@@ -96,7 +96,10 @@
     <Compile Include="Controllers\AdminControllerTests\EditPostShould.cs" />
     <Compile Include="Controllers\AdminControllerTests\IndexShould.cs" />
     <Compile Include="Controllers\AdminControllerTests\RestorePostShould.cs" />
+    <Compile Include="Controllers\AdminControllerTests\UpdatePostShould.cs" />
     <Compile Include="Controllers\PostsControllerTests\ConstructorShould.cs" />
+    <Compile Include="Controllers\PostsControllerTests\DetailsShould.cs" />
+    <Compile Include="Controllers\PostsControllerTests\IndexShould.cs" />
     <Compile Include="Controllers\UserControllerTests\AddPostShould.cs" />
     <Compile Include="Controllers\UserControllerTests\ConstructorShould.cs" />
     <Compile Include="Controllers\UserControllerTests\IndexShould.cs" />
