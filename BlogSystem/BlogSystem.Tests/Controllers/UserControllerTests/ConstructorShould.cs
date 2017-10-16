@@ -37,6 +37,19 @@ namespace BlogSystem.Tests.Controllers.UserControllerTests
         }
 
         [Test]
+        public void ThrowArgumentNullException_WhenViewModelFactoryIsNull()
+        {
+            // Arrange
+            var mockedPostsService = new Mock<IPostsService>();
+            var mockedCategoryService = new Mock<ICategoryService>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
+
+
+            // Act, Assert
+            Assert.Throws<ArgumentNullException>(() => new UserController(mockedPostsService.Object, mockedCategoryService.Object, null));
+        }
+
+        [Test]
         public void NotThrowException_WhenDependenciesAreValid()
         {
             // Arrange
